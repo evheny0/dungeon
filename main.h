@@ -3,7 +3,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include "game.h"
+#include "Game.h"
 
 sf::RenderWindow* Image::window;
 
