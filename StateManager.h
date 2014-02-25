@@ -12,6 +12,7 @@ class StateManager {
   public:
     StateManager();
     ~StateManager();
+    void cleanUpStates();
     IState *getState();
     void quit();
 };

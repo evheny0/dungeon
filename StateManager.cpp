@@ -7,6 +7,11 @@ StateManager::StateManager()
 
 StateManager::~StateManager()
 {
+    cleanUpStates();
+}
+
+void StateManager::cleanUpStates()
+{
     
 }
 
