@@ -1,11 +1,16 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include "GraphicsHandler.h"
+#include "AssetManager.h"
+#include "ConfigManager.h"
+#include "StateManager.h"
 #include "Graphics.h"
 
 class Game {
     sf::RenderWindow window;
+    AssetManager assetManager;
+    ConfigManager configManager;
+    StateManager stateManager;
   public:
     Game();
     ~Game();

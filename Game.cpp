@@ -25,15 +25,23 @@ bool Game::run()
 
 void Game::loop()
 {
+    IState *currentState;
     while(isRunning()) {
-        input();
-        update();
-        render();
+        currentState = stateManager.getState();
+        currentState->input();
+        currentState->update();
+        currentState->render();
     }
 }
 
 bool Game::isRunning()
 {
+    /*
+    if(!stateManager.getState()) {
+        return false;
+    }
+    return true;  
+    */
     return window.isOpen();
 }
 

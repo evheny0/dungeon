@@ -2,7 +2,7 @@
 
 AssetManager::AssetManager()
 {
-
+    
 }
 
 AssetManager::~AssetManager()

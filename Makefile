@@ -1,4 +1,4 @@
-OBJ = main.o Graphics.o Game.o BasicHandler.o StateManager.o AssetManager.o
+OBJ = main.o Graphics.o Game.o BasicHandler.o StateManager.o AssetManager.o ConfigManager.o
 CFLAGS = -Wall -I"/usr/local/include" 
 SFML_LINK_FLAGS = -I"/usr/local/lib" -lsfml-graphics -lsfml-window -lsfml-system
 

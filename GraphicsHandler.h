@@ -1,6 +1,7 @@
 #ifndef GRAPHICS_HANDLER_H
 #define GRAPHICS_HANDLER_H
 
+#include "Assets.h"
 #include "BasicHandler.h"
 
 
