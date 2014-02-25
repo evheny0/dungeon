@@ -12,9 +12,7 @@ Splash::~Splash()
 
 void Splash::input(sf::Event &event)
 {
-    if (event.type == sf::Event::Closed) {
-        stateManager->quit();
-    }
+    inputEvent(event);
 }
 
 void Splash::update()
@@ -25,4 +23,9 @@ void Splash::update()
 void Splash::draw()
 {
 
+}
+
+void Splash::eventClosed()
+{
+    stateManager->quit();
 }
