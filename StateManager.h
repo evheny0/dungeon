@@ -4,6 +4,7 @@
 #include <map>
 #include "CoreTypes.h"
 #include "IState.h"
+#include "Splash.h"
 
 class StateManager {
     std::map<stateID, IState> states;
@@ -12,6 +13,7 @@ class StateManager {
     StateManager();
     ~StateManager();
     IState *getState();
+    void quit();
 };
 
 #endif

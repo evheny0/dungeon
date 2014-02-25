@@ -2,7 +2,7 @@
 
 StateManager::StateManager()
 {
-    currentState = NULL;
+    currentState = new Splash(this);
 }
 
 StateManager::~StateManager()
@@ -13,4 +13,9 @@ StateManager::~StateManager()
 IState *StateManager::getState()
 {
     return currentState;
+}
+
+void StateManager::quit()
+{
+    currentState = NULL;
 }
