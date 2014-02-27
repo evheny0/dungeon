@@ -1,14 +1,34 @@
-OBJ = main.o Graphics.o Game.o BasicHandler.o StateManager.o AssetManager.o ConfigManager.o Splash.o EventHandler.o
-CFLAGS = -Wall -I"/usr/local/include" 
-SFML_LINK_FLAGS = -I"/usr/local/lib" -lsfml-graphics -lsfml-window -lsfml-system
+CC := g++
 
-all: bin
+SRCDIR := src
+BUILDDIR := build
+TARGET := bin
+	
+SRCEXT := cpp
+SOURCES := $(shell find $(SRCDIR) -type f -name *.$(SRCEXT))
+OBJECTS := $(patsubst $(SRCDIR)/%,$(BUILDDIR)/%,$(SOURCES:.$(SRCEXT)=.o))
+CFLAGS := -g -Wall
+LIB := -lsfml-graphics -lsfml-window -lsfml-system
+INC := -I"/usr/local/include" -I"/usr/local/lib" -I include
 
-bin: $(OBJ)
-	g++ $(CFLAGS) $(OBJ) -o bin $(SFML_LINK_FLAGS)
+$(TARGET): $(OBJECTS)
+	@echo " Linking..."
+	@echo " $(CC) $^ -o $(TARGET) $(LIB)"; $(CC) $^ -o $(TARGET) $(LIB)
 
-%.o : %.c
-	g++ $(CFLAGS) -c $<
+$(BUILDDIR)/%.o: $(SRCDIR)/%.$(SRCEXT)
+	@mkdir -p $(BUILDDIR)
+	@echo " $(CC) $(CFLAGS) $(INC) -c -o $@ $<"; $(CC) $(CFLAGS) $(INC) -c -o $@ $<
 
 clean:
-	rm bin $(OBJ)
+	@echo " Cleaning..."; 
+	@echo " $(RM) -r $(BUILDDIR) $(TARGET)"; $(RM) -r $(BUILDDIR) $(TARGET)
+
+# Tests
+tester:
+	$(CC) $(CFLAGS) test/tester.cpp $(INC) $(LIB) -o bin/tester
+
+# Spikes
+ticket:
+	$(CC) $(CFLAGS) spikes/ticket.cpp $(INC) $(LIB) -o bin/ticket
+
+.PHONY: clean

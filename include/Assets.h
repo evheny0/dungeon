@@ -2,7 +2,7 @@
 #define ASSETS_H
 
 
-const char* charachter = "ing/char.png"
+const char* charachter = "ing/char.png";
 //and so on
 
 

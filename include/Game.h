@@ -16,7 +16,7 @@ class Game {
     Game();
     ~Game();
     void windowInit();
-    bool run();
+    int run();
     void loop();
     bool isRunning();
     void input();

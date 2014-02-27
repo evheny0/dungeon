@@ -17,7 +17,7 @@ Game::~Game()
 
 }
 
-bool Game::run()
+int Game::run()
 {
     loop();
     return 0;
