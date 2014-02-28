@@ -1,11 +1,10 @@
 #ifndef STATE_MANAGER_H
 #define STATE_MANAGER_H
 
-#include <iostream>
 #include <stack>
 #include "CoreTypes.h"
-#include "IState.h"
-#include "Splash.h"
+#include "states/IState.h"
+#include "states/Splash.h"
 
 class StateManager {
     std::stack<IState *> statesStack;

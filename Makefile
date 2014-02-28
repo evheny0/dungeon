@@ -6,6 +6,7 @@ TARGET := bin
 	
 SRCEXT := cpp
 SOURCES := $(shell find $(SRCDIR) -type f -name *.$(SRCEXT))
+SUBFOLDERS := $(shell find $(SRCDIR) -type d -exec basename {} \;)
 OBJECTS := $(patsubst $(SRCDIR)/%,$(BUILDDIR)/%,$(SOURCES:.$(SRCEXT)=.o))
 CFLAGS := -g
 LIB := -lsfml-graphics -lsfml-window -lsfml-system
@@ -21,6 +22,9 @@ $(TARGET): $(OBJECTS)
 
 $(BUILDDIR)/%.o: $(SRCDIR)/%.$(SRCEXT)
 	@mkdir -p $(BUILDDIR)
+	@for folder in $(SUBFOLDERS) ; do \
+		mkdir -p $(BUILDDIR)/$$folder ; \
+	done
 	@echo "$(BUILD_COLOR) $(CC) $(CFLAGS) $(INC) -c -o $@ $< $(RESET_COLOR)"; $(CC) $(CFLAGS) $(INC) -c -o $@ $<
 
 clean:
