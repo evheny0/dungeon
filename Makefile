@@ -6,7 +6,7 @@ TARGET := bin
 	
 SRCEXT := cpp
 SOURCES := $(shell find $(SRCDIR) -type f -name *.$(SRCEXT))
-SUBFOLDERS := $(shell find $(SRCDIR) -type d -exec basename {} \;)
+SUBFOLDERS := $(shell find $(SRCDIR) -type d -not -name $(SRCDIR) -exec basename {} \;)
 OBJECTS := $(patsubst $(SRCDIR)/%,$(BUILDDIR)/%,$(SOURCES:.$(SRCEXT)=.o))
 CFLAGS := -g
 LIB := -lsfml-graphics -lsfml-window -lsfml-system
