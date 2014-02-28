@@ -30,8 +30,7 @@ void Game::loop()
     while(isRunning()) {
         window.pollEvent(event);
 
-        currentState = stateManager.getState();
-        currentState->input(event);
+        stateManager.input(event);
         update();
         render();
     }
@@ -39,21 +38,18 @@ void Game::loop()
 
 bool Game::isRunning()
 {
-    if(!stateManager.getState()) {
-        return false;
-    }
-    return true;  
+    return stateManager.isRunning();  
     //return window.isOpen();
 }
 
 void Game::update()
 {
-    currentState->update();
+    stateManager.update();
 }
 
 void Game::render()
 {
     window.clear();
-    currentState->render();
+    stateManager.render();
     window.display();
 }

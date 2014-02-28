@@ -9,6 +9,7 @@ class IState {
     virtual void input(sf::Event &event) { };
     virtual void update() { };
     virtual void render() { };
+    virtual IState *nextState() { };
 };
 
 #endif

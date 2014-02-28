@@ -27,5 +27,5 @@ void Splash::draw()
 
 void Splash::eventClosed()
 {
-    stateManager->quit();
+    stateManager->resetState();
 }

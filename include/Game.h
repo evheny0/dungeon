@@ -11,7 +11,6 @@ class Game {
     AssetManager assetManager;
     ConfigManager configManager;
     StateManager stateManager;
-    IState *currentState;
   public:
     Game();
     ~Game();
@@ -23,6 +22,8 @@ class Game {
     void update();
     void render();
 };
+
+extern Game game;
 
 
 #endif

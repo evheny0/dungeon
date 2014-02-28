@@ -27,6 +27,8 @@ clean:
 	@echo "$(MESSAGE_COLOR) Cleaning... $(RESET_COLOR)"; 
 	@echo " $(RM) -r $(BUILDDIR) $(TARGET)"; $(RM) -r $(BUILDDIR) $(TARGET)
 
+rebuild: clean $(TARGET)
+
 # Tests
 tester:
 	$(CC) $(CFLAGS) test/tester.cpp $(INC) $(LIB) -o bin/tester
