@@ -2,7 +2,7 @@
 #define BUTTON_H
 
 #include <string>
-#include "Graphics.h"
+#include "Image.h"
 
 
 class Button {  // : public Drawable

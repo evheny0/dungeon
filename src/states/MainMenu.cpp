@@ -17,8 +17,8 @@ void MainMenu::initButtons()
     quitButton.setTextAndImages("Quit", Game::assetManager->getImage(buttonID), Game::assetManager->getImage(button_inactiveID));
 
     startButton.setPosition(50, 50);
-    settingsButton.setPosition(50, 80);
-    quitButton.setPosition(50, 110);
+    settingsButton.setPosition(50, 100);
+    quitButton.setPosition(50, 150);
 }
 
 

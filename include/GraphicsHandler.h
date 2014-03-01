@@ -4,7 +4,7 @@
 #include <map>
 #include "Assets.h"
 #include "BasicHandler.h"
-#include "Graphics.h"
+#include "Image.h"
 
 
 class GraphicsHandler : public BasicHandler {
