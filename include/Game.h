@@ -6,24 +6,35 @@
 #include "StateManager.h"
 #include "Graphics.h"
 
+const int SCREEN_WIDTH = 960;
+const int SCREEN_HEIGHT = 540;
+
+class StateManager;
+
+
 class Game {
     sf::RenderWindow window;
-    AssetManager assetManager;
-    ConfigManager configManager;
-    StateManager stateManager;
+  public:
+    static AssetManager *assetManager;
+  private:
+    ConfigManager *configManager;
+    StateManager *stateManager;
   public:
     Game();
     ~Game();
+    void modulesInit();
     void windowInit();
+
     int run();
     void loop();
     bool isRunning();
     void input();
     void update();
     void render();
-};
 
-extern Game game;
+    AssetManager *getAssetManager();
+    void hello();
+};
 
 
 #endif

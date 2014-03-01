@@ -6,6 +6,7 @@
 #include "states/IState.h"
 #include "states/Splash.h"
 
+
 class StateManager {
     std::stack<IState *> statesStack;
     IState *currentState;
@@ -24,5 +25,8 @@ class StateManager {
     void cleanUpStates();
     void updateCurrentState();
 };
+
+
+#include "Game.h"
 
 #endif

@@ -3,6 +3,7 @@
 Splash::Splash(StateManager *stateManager)
 {
     this->stateManager = stateManager;
+    splash = Game::assetManager->getImage(splashID);
 }
 
 Splash::~Splash()
@@ -20,9 +21,10 @@ void Splash::update()
 
 }
 
-void Splash::draw()
+void Splash::render()
 {
-
+    splash->setPosition(0, 0);
+    splash->show();
 }
 
 void Splash::eventClosed()

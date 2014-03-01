@@ -6,9 +6,9 @@
 
 class IState {
   public:
-    virtual void input(sf::Event &event) { };
-    virtual void update() { };
-    virtual void render() { };
+    virtual void input(sf::Event &event) = 0;
+    virtual void update() = 0;
+    virtual void render() = 0;
     virtual IState *nextState() { };
 };
 

@@ -6,5 +6,6 @@
 #include "Game.h"
 
 sf::RenderWindow* Image::window;
+AssetManager* Game::assetManager;
 
 #endif

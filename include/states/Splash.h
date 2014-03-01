@@ -5,18 +5,21 @@
 #include "states/IState.h"
 #include "StateManager.h"
 #include "EventHandler.h"
+#include "Graphics.h"
+#include "Assets.h"
 
 class StateManager;
 
 
 class Splash : public IState, public EventHandler {
     StateManager *stateManager;
+    Image *splash;
   public:
     Splash(StateManager *stateManager);
     ~Splash();
     void input(sf::Event &event);
     void update();
-    void draw();
+    void render();
     void eventClosed();
 };
 

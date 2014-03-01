@@ -8,7 +8,7 @@ SRCEXT := cpp
 SOURCES := $(shell find $(SRCDIR) -type f -name *.$(SRCEXT))
 SUBFOLDERS := $(shell find $(SRCDIR) -type d -not -name $(SRCDIR) -exec basename {} \;)
 OBJECTS := $(patsubst $(SRCDIR)/%,$(BUILDDIR)/%,$(SOURCES:.$(SRCEXT)=.o))
-CFLAGS := -g
+CFLAGS := -g 
 LIB := -lsfml-graphics -lsfml-window -lsfml-system
 INC := -I"/usr/local/include" -I"/usr/local/lib" -I include
 

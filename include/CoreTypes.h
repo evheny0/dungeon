@@ -3,6 +3,7 @@
 
 #include <string>
 
-typedef std::string stateID;
+typedef char* StateID;
+typedef char* ImageID;
 
 #endif
