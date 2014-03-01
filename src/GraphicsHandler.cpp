@@ -8,7 +8,10 @@ GraphicsHandler::GraphicsHandler()
 
 GraphicsHandler::~GraphicsHandler()
 {
-    
+    std::map<ImageID, Image *>::iterator it;
+    for (it = images.begin(); it != images.end(); ++it) {
+        delete it->second;
+    }
 }
 
 Image *GraphicsHandler::getImage(ImageID &image)

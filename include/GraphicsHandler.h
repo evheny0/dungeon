@@ -9,7 +9,6 @@
 
 class GraphicsHandler : public BasicHandler {
     std::map<ImageID, Image *> images;
-    std::map<ImageID, Image *>::iterator it;
   public:
     GraphicsHandler();
     ~GraphicsHandler();
