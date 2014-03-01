@@ -16,8 +16,8 @@ void MainMenu::initButtons()
     settingsButton.setTextAndImages("Settings", Game::assetManager->getImage(buttonID), Game::assetManager->getImage(button_inactiveID));
     quitButton.setTextAndImages("Quit", Game::assetManager->getImage(buttonID), Game::assetManager->getImage(button_inactiveID));
 
-    startButton.setPosition(50, 50);
-    settingsButton.setPosition(50, 100);
+    startButton.setPosition(110, 110);
+    settingsButton.setPosition(10, 10);
     quitButton.setPosition(50, 150);
 }
 
@@ -30,7 +30,7 @@ void MainMenu::input(sf::Event &event)
 
 void MainMenu::update() 
 {
-
+    //quitButton.setPosition(500, 150);
 }
 
 void MainMenu::render()
@@ -50,5 +50,10 @@ void MainMenu::eventMouseMoved(sf::Event::MouseMoveEvent &mouseMove)
 void MainMenu::eventClosed()
 {
     stateManager->resetState();
+}
+
+void MainMenu::eventLeftMouseButtonPressed(sf::Event::MouseButtonEvent &mouseButton)
+{
+
 }
 

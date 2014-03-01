@@ -19,6 +19,7 @@ class Button {  // : public Drawable
     void setText(std::string text);
     void setTextAndImages(std::string text, Image *backgroundImage, Image *activeImage = 0);
     void setPosition(int x, int y);
+    void move(int x, int y);
     void setActive();
     void setInactive();
     void render();

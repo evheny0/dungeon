@@ -21,6 +21,7 @@ class MainMenu : public IState, public EventHandler {
 
   private:
     void eventMouseMoved(sf::Event::MouseMoveEvent &mouseMove);
+    void eventLeftMouseButtonPressed(sf::Event::MouseButtonEvent &mouseButton);
     void eventClosed();
 };
 

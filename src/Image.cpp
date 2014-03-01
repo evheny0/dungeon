@@ -3,7 +3,7 @@
 Image::Image(std::string path)
 {
     texture.loadFromFile(path);
-    sprite.setTexture(texture);
+    sprite.setTexture(texture, true);
 }
 
 Image::~Image()
@@ -13,13 +13,20 @@ Image::~Image()
 
 void Image::setPosition(int x, int y)
 {
-    sprite.setPosition(sf::Vector2f(x, y));
+    sprite.setPosition(x, y);
+}
+
+void Image::move(int x, int y)
+{
+    sprite.move(x, y);
 }
 
 void Image::show()
 {
     window->draw(sprite);
 }
+
+
 
 int Image::getWidth()
 {
@@ -33,5 +40,9 @@ int Image::getHeight()
 
 sf::Rect<int> Image::getTextureRect()
 {
-    return sprite.getTextureRect();
+    sf::Rect<int> out;
+    out = sprite.getTextureRect();
+    out.left = sprite.getPosition().x;
+    out.top = sprite.getPosition().y;
+    return out;
 }

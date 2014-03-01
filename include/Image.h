@@ -15,6 +15,7 @@ class Image {
     Image(std::string path);
     ~Image();
     void setPosition(int x, int y);
+    void move(int x, int y);
     void show();
     int getWidth();
     int getHeight();

@@ -44,8 +44,14 @@ void Button::setPosition(int x, int y)
 {
     backgroundImage->setPosition(x, y);
     activeImage->setPosition(x, y);
-    
+
     activeArea = backgroundImage->getTextureRect();
+}
+
+void Button::move(int x, int y)
+{
+    backgroundImage->move(x, y);
+    activeImage->move(x, y);
 }
 
 void Button::setActive()

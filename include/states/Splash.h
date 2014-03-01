@@ -13,6 +13,7 @@
 
 class Splash : public IState, public EventHandler {
     Image *splash;
+    sf::Clock timer;
   public:
     Splash(StateManager *stateManager);
     ~Splash();
