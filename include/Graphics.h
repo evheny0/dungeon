@@ -16,6 +16,9 @@ class Image {
     ~Image();
     void setPosition(int x, int y);
     void show();
+    int getWidth();
+    int getHeight();
+    sf::Rect<int> getTextureRect();
 };
 
 

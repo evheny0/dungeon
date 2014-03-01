@@ -36,3 +36,40 @@ void EventHandler::inputEvent(sf::Event &event)
         break;
     }
 }
+
+
+
+void EventHandler::eventMouseButtonPressed(sf::Event::MouseButtonEvent &mouseButton)
+{
+    switch (mouseButton.button) {
+    case sf::Mouse::Left:
+        eventLeftMouseButtonPressed(mouseButton);
+        break;
+
+    case sf::Mouse::Right:
+        eventRightMouseButtonPressed(mouseButton);
+        break;
+
+    case sf::Mouse::Middle:
+        eventMiddleMouseButtonPressed(mouseButton);
+        break;
+    }
+}
+
+void EventHandler::eventMouseButtonReleased(sf::Event::MouseButtonEvent &mouseButton)
+{
+    switch (mouseButton.button) {
+    case sf::Mouse::Left:
+        eventLeftMouseButtonReleased(mouseButton);
+        break;
+
+    case sf::Mouse::Right:
+        eventRightMouseButtonReleased(mouseButton);
+        break;
+
+    case sf::Mouse::Middle:
+        eventMiddleMouseButtonReleased(mouseButton);
+        break;
+    }
+}
+

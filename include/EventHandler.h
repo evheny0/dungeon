@@ -11,10 +11,18 @@ class EventHandler {
     virtual void eventKeyReleased(sf::Event::KeyEvent &key) {};
     virtual void eventTextEntered(sf::Event::TextEvent &text) {};
     virtual void eventMouseMoved(sf::Event::MouseMoveEvent &mouseMove) {};
-    virtual void eventMouseButtonPressed(sf::Event::MouseButtonEvent &mouseButton) {};
-    virtual void eventMouseButtonReleased(sf::Event::MouseButtonEvent &mouseButton) {};
+    virtual void eventLeftMouseButtonPressed(sf::Event::MouseButtonEvent &mouseButton) {};
+    virtual void eventRightMouseButtonPressed(sf::Event::MouseButtonEvent &mouseButton) {};
+    virtual void eventMiddleMouseButtonPressed(sf::Event::MouseButtonEvent &mouseButton) {};
+    virtual void eventLeftMouseButtonReleased(sf::Event::MouseButtonEvent &mouseButton) {};
+    virtual void eventRightMouseButtonReleased(sf::Event::MouseButtonEvent &mouseButton) {};
+    virtual void eventMiddleMouseButtonReleased(sf::Event::MouseButtonEvent &mouseButton) {};
     virtual void eventMouseWheelMoved(sf::Event::MouseWheelEvent &mouseWheel) {};
     virtual void eventClosed() {};
+
+  private:
+    void eventMouseButtonPressed(sf::Event::MouseButtonEvent &mouseButton);
+    void eventMouseButtonReleased(sf::Event::MouseButtonEvent &mouseButton);
 };
 
 

@@ -1,8 +1,7 @@
 #include "states/Splash.h"
 
-Splash::Splash(StateManager *stateManager)
+Splash::Splash(StateManager *stateManager) : IState(stateManager)
 {
-    this->stateManager = stateManager;
     splash = Game::assetManager->getImage(splashID);
 }
 
@@ -18,7 +17,7 @@ void Splash::input(sf::Event &event)
 
 void Splash::update()
 {
-
+    stateManager->setNextState(new MainMenu(stateManager));
 }
 
 void Splash::render()
@@ -26,6 +25,8 @@ void Splash::render()
     splash->setPosition(0, 0);
     splash->show();
 }
+
+
 
 void Splash::eventClosed()
 {

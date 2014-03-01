@@ -6,7 +6,8 @@
 
 extern ImageID charachterID;
 extern ImageID splashID;
-//and so on
+extern ImageID buttonID;
+extern ImageID button_inactiveID;
 
 
 #endif

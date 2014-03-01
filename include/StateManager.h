@@ -6,6 +6,8 @@
 #include "states/IState.h"
 #include "states/Splash.h"
 
+class IState;
+
 
 class StateManager {
     std::stack<IState *> statesStack;
@@ -21,6 +23,7 @@ class StateManager {
     void pushState(IState *state);
     void popState();
     void resetState();
+    void setNextState(IState *state);
   private:
     void cleanUpStates();
     void updateCurrentState();

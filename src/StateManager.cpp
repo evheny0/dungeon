@@ -56,6 +56,10 @@ void StateManager::resetState()
     nextState = NULL;
 }
 
+void StateManager::setNextState(IState *state)
+{
+    nextState = state;
+}
 
 
 void StateManager::updateCurrentState()

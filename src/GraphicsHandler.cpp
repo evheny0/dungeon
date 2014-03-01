@@ -4,6 +4,8 @@ GraphicsHandler::GraphicsHandler()
 {
     images[splashID] = new Image(splashID);
     images[charachterID] = new Image(charachterID);
+    images[buttonID] = new Image(buttonID);
+    images[button_inactiveID] = new Image(button_inactiveID);
 }
 
 GraphicsHandler::~GraphicsHandler()

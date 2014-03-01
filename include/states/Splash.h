@@ -3,16 +3,15 @@
 
 #include <SFML/Graphics.hpp>
 #include "states/IState.h"
-#include "StateManager.h"
+
 #include "EventHandler.h"
 #include "Graphics.h"
 #include "Assets.h"
 
-class StateManager;
+#include "MainMenu.h"
 
 
 class Splash : public IState, public EventHandler {
-    StateManager *stateManager;
     Image *splash;
   public:
     Splash(StateManager *stateManager);
