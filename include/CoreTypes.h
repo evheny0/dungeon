@@ -5,5 +5,6 @@
 
 typedef char* StateID;
 typedef char* ImageID;
+typedef char* FontID;
 
 #endif

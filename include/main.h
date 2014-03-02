@@ -5,6 +5,7 @@
 #include <iostream>
 #include "Game.h"
 
+sf::RenderWindow* Text::window;
 sf::RenderWindow* Image::window;
 AssetManager* Game::assetManager;
 

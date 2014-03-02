@@ -12,18 +12,22 @@ MainMenu::~MainMenu()
 
 void MainMenu::initButtons()
 {
-    buttons.push_back(newButton("Start"));
-    buttons.push_back(newButton("Settings"));
-    buttons.push_back(newButton("Quit"));
+    buttons.push_back(newButton("START"));
+    buttons.push_back(newButton("SETTINGS"));
+    buttons.push_back(newButton("QUIT"));
 
-    buttons[0]->setPosition(100, 100);
-    buttons[1]->setPosition(100, 200);
-    buttons[2]->setPosition(100, 300);
+    buttons[0]->setPosition(300, 100);
+    buttons[1]->setPosition(300, 200);
+    buttons[2]->setPosition(300, 300);
 }
 
-Button *MainMenu::newButton(std::string text)
+Button *MainMenu::newButton(std::string str)
 {
-    return new Button(text, Game::assetManager->getImage(buttonID), Game::assetManager->getImage(button_inactiveID));
+    Button *returnButton = new Button();
+    returnButton->setImages(Game::assetManager->getImage(buttonID), Game::assetManager->getImage(button_inactiveID));
+    returnButton->setText(Game::assetManager->getText(digiffitiID)/*, 10, 255, 255, 255*/);
+    returnButton->setString(str);
+    return returnButton;
 }
 
 
@@ -33,15 +37,15 @@ void MainMenu::input(sf::Event &event)
     inputEvent(event);
 }
 
-void MainMenu::update() 
+void MainMenu::update()
 {
 
 }
 
 void MainMenu::render()
 {
-    for (std::vector<Button *>::iterator i = buttons.begin(); i != buttons.end(); ++i) {
-        (*i)->render();
+    for (it = buttons.begin(); it != buttons.end(); ++it) {
+        (*it)->render();
     }
 }
 
@@ -49,7 +53,9 @@ void MainMenu::render()
 
 void MainMenu::eventMouseMoved(sf::Event::MouseMoveEvent &mouseMove)
 {
-
+    for (it = buttons.begin(); it != buttons.end(); ++it) {
+        (*it)->mouseMoved(mouseMove.x, mouseMove.y);
+    }
 }
 
 void MainMenu::eventClosed()

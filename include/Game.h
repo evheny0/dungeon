@@ -13,12 +13,14 @@ class StateManager;
 
 
 class Game {
-    sf::RenderWindow window;
   public:
+    sf::RenderWindow window;
     static AssetManager *assetManager;
+
   private:
     ConfigManager *configManager;
     StateManager *stateManager;
+
   public:
     Game();
     ~Game();

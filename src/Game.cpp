@@ -17,6 +17,7 @@ void Game::windowInit()
 {
     window.create(sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "Dungeon");
     Image::window = &window;
+    Text::window = &window;
     window.setVerticalSyncEnabled(true);
 }
 
@@ -39,9 +40,9 @@ void Game::loop()
 {
     sf::Event event;
     while(isRunning()) {
-        window.pollEvent(event);
-
-        stateManager->input(event);
+        while(window.pollEvent(event)) {
+            stateManager->input(event);
+        }
         update();
         render();
     }

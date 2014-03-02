@@ -7,11 +7,6 @@ Button::Button() : activeArea(0, 0, 0, 0)
     isActive = false;
 }
 
-Button::Button(std::string text, Image *backgroundImage, Image *activeImage)
-{
-    setTextAndImages(text, backgroundImage, activeImage);
-}
-
 Button::~Button()
 {
 
@@ -27,15 +22,27 @@ void Button::setImages(Image *backgroundImage, Image *activeImage)
     }
 }
 
-void Button::setText(std::string text)
+void Button::setText(Text *text, int size, int red, int blue, int green, int alpha)
 {
     this->text = text;
+    this->text->setSize(size);
+    this->text->setColor(red, blue, green, alpha);
 }
 
-void Button::setTextAndImages(std::string text, Image *backgroundImage, Image *activeImage)
+void Button::setString(std::string &str)
 {
-    setImages(backgroundImage, activeImage);
-    setText(text);
+    text->setString(str);
+}
+
+
+
+void Button::mouseMoved(int x, int y)
+{
+    if (activeArea.contains(x, y)) {
+        setActive();
+    } else {
+        setInactive();
+    }
 }
 
 
@@ -44,6 +51,7 @@ void Button::setPosition(int x, int y)
 {
     backgroundImage->setPosition(x, y);
     activeImage->setPosition(x, y);
+    text->setPosition(x + 7, y - 8);  // need to calculate using images params
 
     activeArea = backgroundImage->getTextureRect();
 }
@@ -71,4 +79,5 @@ void Button::render()
     } else {
         backgroundImage->show();
     }
+    text->show();
 }
