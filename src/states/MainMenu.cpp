@@ -12,15 +12,18 @@ MainMenu::~MainMenu()
 
 void MainMenu::initButtons()
 {
-    // Here is a problem with the images, which are equal to one instance
+    buttons.push_back(newButton("Start"));
+    buttons.push_back(newButton("Settings"));
+    buttons.push_back(newButton("Quit"));
 
-    startButton.setTextAndImages("Start", Game::assetManager->getImage(buttonID), Game::assetManager->getImage(button_inactiveID));
-    settingsButton.setTextAndImages("Settings", Game::assetManager->getImage(buttonID), Game::assetManager->getImage(button_inactiveID));
-    quitButton.setTextAndImages("Quit", Game::assetManager->getImage(buttonID), Game::assetManager->getImage(button_inactiveID));
+    buttons[0]->setPosition(100, 100);
+    buttons[1]->setPosition(100, 200);
+    buttons[2]->setPosition(100, 300);
+}
 
-    startButton.setPosition(100, 100);
-    settingsButton.setPosition(100, 200);
-    quitButton.setPosition(100, 300);
+Button *MainMenu::newButton(std::string text)
+{
+    return new Button(text, Game::assetManager->getImage(buttonID), Game::assetManager->getImage(button_inactiveID));
 }
 
 
@@ -37,9 +40,9 @@ void MainMenu::update()
 
 void MainMenu::render()
 {
-    startButton.render();
-    settingsButton.render();
-    quitButton.render();
+    for (std::vector<Button *>::iterator i = buttons.begin(); i != buttons.end(); ++i) {
+        (*i)->render();
+    }
 }
 
 
@@ -58,4 +61,3 @@ void MainMenu::eventLeftMouseButtonPressed(sf::Event::MouseButtonEvent &mouseBut
 {
 
 }
-

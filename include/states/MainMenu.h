@@ -1,6 +1,7 @@
 #ifndef MAIN_MENU_H
 #define MAIN_MENU_H
 
+#include <vector>
 #include "Assets.h"
 #include "states/IState.h"
 #include "gui/Button.h"
@@ -8,13 +9,12 @@
 
 
 class MainMenu : public IState, public EventHandler {
-    Button startButton;
-    Button settingsButton;
-    Button quitButton;
+    std::vector<Button *> buttons;
   public:
     MainMenu(StateManager *stateManager);
     ~MainMenu();
     void initButtons();
+    Button *newButton(std::string text);
     void input(sf::Event &event);
     void update();
     void render();
