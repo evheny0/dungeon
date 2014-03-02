@@ -2,25 +2,34 @@
 
 GraphicsHandler::GraphicsHandler()
 {
-    images[splashID] = new Image(splashID);
-    images[charachterID] = new Image(charachterID);
-    images[buttonID] = new Image(buttonID);
-    images[button_inactiveID] = new Image(button_inactiveID);
+    textures[splashID] = newTexture(splashID);
+    textures[charachterID] = newTexture(charachterID);
+    textures[buttonID] = newTexture(buttonID);
+    textures[button_inactiveID] = newTexture(button_inactiveID);
 }
 
 GraphicsHandler::~GraphicsHandler()
 {
-    std::map<ImageID, Image *>::iterator it;
-    for (it = images.begin(); it != images.end(); ++it) {
+    std::map<ImageID, sf::Texture *>::iterator it;
+    for (it = textures.begin(); it != textures.end(); ++it) {
         delete it->second;
     }
 }
 
 Image *GraphicsHandler::getImage(ImageID &image)
 {
-    Image *returnImage = images[image];
-    if (!returnImage) {
+    sf::Texture *currentTexture = textures[image];
+    if (!currentTexture) {
         throw "Image not found";
     }
-    return returnImage;
+    return new Image(*currentTexture);
+}
+
+
+
+sf::Texture *GraphicsHandler::newTexture(ImageID path)
+{
+    sf::Texture *returnTexture = new sf::Texture();
+    returnTexture->loadFromFile(path);
+    return returnTexture;
 }

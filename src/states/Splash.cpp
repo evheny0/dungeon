@@ -7,7 +7,7 @@ Splash::Splash(StateManager *stateManager) : IState(stateManager)
 
 Splash::~Splash()
 {
-
+    delete splash;
 }
 
 void Splash::input(sf::Event &event)

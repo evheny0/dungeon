@@ -8,11 +8,15 @@
 
 
 class GraphicsHandler : public BasicHandler {
-    std::map<ImageID, Image *> images;
+    std::map<ImageID, sf::Texture *> textures;
+
   public:
     GraphicsHandler();
     ~GraphicsHandler();
     Image *getImage(ImageID &image);
+
+  private:
+    sf::Texture *newTexture(ImageID path);
 };
 
 #endif

@@ -6,6 +6,12 @@ Image::Image(std::string path)
     sprite.setTexture(texture, true);
 }
 
+Image::Image(sf::Texture &texture)
+{
+    this->texture = texture;
+    sprite.setTexture(texture);
+}
+
 Image::~Image()
 {
 
