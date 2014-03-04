@@ -6,6 +6,7 @@
 #include "states/IState.h"
 #include "gui/Button.h"
 #include "EventHandler.h"
+#include "Functor.h"
 
 
 class MainMenu : public IState, public EventHandler {
@@ -19,6 +20,8 @@ class MainMenu : public IState, public EventHandler {
     void input(sf::Event &event);
     void update();
     void render();
+
+    void onExit();
 
   private:
     void eventMouseMoved(sf::Event::MouseMoveEvent &mouseMove);

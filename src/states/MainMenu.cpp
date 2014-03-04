@@ -23,9 +23,9 @@ void MainMenu::initButtons()
 
 Button *MainMenu::newButton(std::string str)
 {
-    Button *returnButton = new Button();
+    Button *returnButton = new Button(new Functor<MainMenu>(this, &MainMenu::onExit));
     returnButton->setImages(Game::assetManager->getImage(buttonID), Game::assetManager->getImage(button_inactiveID));
-    returnButton->setText(Game::assetManager->getText(digiffitiID)/*, 10, 255, 255, 255*/);
+    returnButton->setText(Game::assetManager->getText(digiffitiID));
     returnButton->setString(str);
     return returnButton;
 }
@@ -49,6 +49,11 @@ void MainMenu::render()
     }
 }
 
+void MainMenu::onExit()
+{
+    stateManager->resetState();
+}
+
 
 
 void MainMenu::eventMouseMoved(sf::Event::MouseMoveEvent &mouseMove)
@@ -65,5 +70,7 @@ void MainMenu::eventClosed()
 
 void MainMenu::eventLeftMouseButtonPressed(sf::Event::MouseButtonEvent &mouseButton)
 {
-
+    for (it = buttons.begin(); it != buttons.end(); ++it) {
+        (*it)->click(mouseButton.x, mouseButton.y);
+    }
 }

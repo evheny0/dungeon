@@ -1,7 +1,8 @@
 #include "gui/Button.h"
 
-Button::Button() : activeArea(0, 0, 0, 0)
+Button::Button(BasicFunctor *observer) : activeArea(0, 0, 0, 0)
 {
+    this->observer = observer;
     backgroundImage = NULL;
     activeImage = NULL;
     isActive = false;
@@ -9,7 +10,7 @@ Button::Button() : activeArea(0, 0, 0, 0)
 
 Button::~Button()
 {
-
+    delete observer;
 }
 
 void Button::setImages(Image *backgroundImage, Image *activeImage)
@@ -42,6 +43,13 @@ void Button::mouseMoved(int x, int y)
         setActive();
     } else {
         setInactive();
+    }
+}
+
+void Button::click(int x, int y)
+{
+    if (observer && activeArea.contains(x, y)) {
+        observer->notify();
     }
 }
 

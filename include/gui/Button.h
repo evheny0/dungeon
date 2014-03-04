@@ -4,9 +4,11 @@
 #include <string>
 #include "Image.h"
 #include "Text.h"
+#include "Functor.h"
 
 
 class Button {  // : public Drawable
+    BasicFunctor *observer;
     Image *backgroundImage;
     Image *activeImage;
     Text *text;
@@ -14,6 +16,7 @@ class Button {  // : public Drawable
     bool isActive;
   public:
     Button();
+    Button(BasicFunctor *observer = NULL);
     ~Button();
     void setImages(Image *backgroundImage, Image *activeImage = 0);
     void setText(Text *font, int size = 30, int red = 0, int blue = 0, int green = 0, int alpha = 255);
@@ -21,6 +24,7 @@ class Button {  // : public Drawable
     void setPosition(int x, int y);
 
     void mouseMoved(int x, int y);
+    void click(int x, int y);
 
     void move(int x, int y);
     void setActive();
