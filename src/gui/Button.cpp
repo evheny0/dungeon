@@ -87,5 +87,7 @@ void Button::render()
     } else {
         backgroundImage->show();
     }
-    text->show();
+    if (text) {
+        text->show();
+    }
 }

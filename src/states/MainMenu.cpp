@@ -12,18 +12,18 @@ MainMenu::~MainMenu()
 
 void MainMenu::initButtons()
 {
-    buttons.push_back(newButton("START"));
-    buttons.push_back(newButton("SETTINGS"));
-    buttons.push_back(newButton("QUIT"));
+    buttons.push_back(newButton("START", &MainMenu::onStartGame));
+    buttons.push_back(newButton("SETTINGS", &MainMenu::onSettings));
+    buttons.push_back(newButton("QUIT", &MainMenu::onExit));
 
     buttons[0]->setPosition(300, 100);
     buttons[1]->setPosition(300, 200);
     buttons[2]->setPosition(300, 300);
 }
 
-Button *MainMenu::newButton(std::string str)
+Button *MainMenu::newButton(std::string str, void(MainMenu::*callback)())
 {
-    Button *returnButton = new Button(new Functor<MainMenu>(this, &MainMenu::onExit));
+    Button *returnButton = new Button(new Functor<MainMenu>(this, callback));
     returnButton->setImages(Game::assetManager->getImage(buttonID), Game::assetManager->getImage(button_inactiveID));
     returnButton->setText(Game::assetManager->getText(digiffitiID));
     returnButton->setString(str);
@@ -49,9 +49,21 @@ void MainMenu::render()
     }
 }
 
+
+
 void MainMenu::onExit()
 {
     stateManager->resetState();
+}
+
+void MainMenu::onSettings()
+{
+
+}
+
+void MainMenu::onStartGame()
+{
+
 }
 
 

@@ -16,12 +16,14 @@ class MainMenu : public IState, public EventHandler {
     MainMenu(StateManager *stateManager);
     ~MainMenu();
     void initButtons();
-    Button *newButton(std::string str);
+    Button *newButton(std::string str, void(MainMenu::*callback)());
     void input(sf::Event &event);
     void update();
     void render();
 
     void onExit();
+    void onSettings();
+    void onStartGame();
 
   private:
     void eventMouseMoved(sf::Event::MouseMoveEvent &mouseMove);
