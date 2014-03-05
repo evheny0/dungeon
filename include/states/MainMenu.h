@@ -7,6 +7,7 @@
 #include "gui/Button.h"
 #include "EventHandler.h"
 #include "Functor.h"
+#include "states/Settings.h"
 
 
 class MainMenu : public IState, public EventHandler {

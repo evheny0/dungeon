@@ -61,10 +61,13 @@ void StateManager::setNextState(IState *state)
     nextState = state;
 }
 
-
 void StateManager::updateCurrentState()
 {
     if (currentState != nextState) {
+        if (!(statesStack.empty()) && nextState != statesStack.top()) {
+            currentState = nextState;
+            return;
+        }
         delete currentState;
         currentState = nextState;
     }

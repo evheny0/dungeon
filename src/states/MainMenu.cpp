@@ -7,6 +7,7 @@ MainMenu::MainMenu(StateManager *stateManager) : IState(stateManager)
 
 MainMenu::~MainMenu()
 {
+    // cleaning up buttons
 
 }
 
@@ -58,7 +59,7 @@ void MainMenu::onExit()
 
 void MainMenu::onSettings()
 {
-
+    stateManager->pushState(new Settings(stateManager));
 }
 
 void MainMenu::onStartGame()
