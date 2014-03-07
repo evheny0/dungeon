@@ -2,6 +2,7 @@
 #define SETTINGS_H
 
 #include <vector>
+#include <string>
 #include "Assets.h"
 #include "states/IState.h"
 #include "gui/Button.h"

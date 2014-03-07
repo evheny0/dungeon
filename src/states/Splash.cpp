@@ -18,7 +18,7 @@ void Splash::input(sf::Event &event)
 
 void Splash::update()
 {
-    if (timer.getElapsedTime() > sf::seconds(1)) {
+    if (timer.getElapsedTime() > sf::milliseconds(300)) {
         stateManager->setNextState(new MainMenu(stateManager));
     }
 }

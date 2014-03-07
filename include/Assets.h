@@ -9,6 +9,8 @@ extern ImageID splashID;
 extern ImageID buttonID;
 extern ImageID button_inactiveID;
 
+extern ImageID floorID;
+
 extern FontID o4bID;
 extern FontID digiffitiID;
 extern FontID m12ID;

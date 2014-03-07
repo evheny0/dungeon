@@ -42,12 +42,12 @@ void StateManager::render()
 void StateManager::pushState(IState *state)
 {
     statesStack.push(state);         // needs rewriting
-    nextState = state;               //
+    nextState = state;               // also need remove pointers
 }
 
 void StateManager::popState()
 {
-    delete nextState;        // 
+    delete nextState;                // 
     statesStack.pop();               // needs rewriting
     nextState = statesStack.top();   //
 }

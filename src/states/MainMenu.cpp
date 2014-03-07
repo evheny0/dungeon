@@ -64,7 +64,7 @@ void MainMenu::onSettings()
 
 void MainMenu::onStartGame()
 {
-
+    stateManager->setNextState(new GameState(stateManager));
 }
 
 

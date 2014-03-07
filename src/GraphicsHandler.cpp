@@ -6,6 +6,7 @@ GraphicsHandler::GraphicsHandler()
     textures[charachterID] = newTexture(charachterID);
     textures[buttonID] = newTexture(buttonID);
     textures[button_inactiveID] = newTexture(button_inactiveID);
+    textures[floorID] = newTexture(floorID);
 }
 
 GraphicsHandler::~GraphicsHandler()

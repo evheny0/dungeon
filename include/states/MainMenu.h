@@ -8,6 +8,7 @@
 #include "EventHandler.h"
 #include "Functor.h"
 #include "states/Settings.h"
+#include "states/GameState.h"
 
 
 class MainMenu : public IState, public EventHandler {
@@ -16,8 +17,10 @@ class MainMenu : public IState, public EventHandler {
   public:
     MainMenu(StateManager *stateManager);
     ~MainMenu();
+  private:
     void initButtons();
     Button *newButton(std::string str, void(MainMenu::*callback)());
+  public:
     void input(sf::Event &event);
     void update();
     void render();
@@ -25,7 +28,6 @@ class MainMenu : public IState, public EventHandler {
     void onExit();
     void onSettings();
     void onStartGame();
-
   private:
     void eventMouseMoved(sf::Event::MouseMoveEvent &mouseMove);
     void eventLeftMouseButtonPressed(sf::Event::MouseButtonEvent &mouseButton);
