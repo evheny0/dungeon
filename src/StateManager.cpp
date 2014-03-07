@@ -2,8 +2,8 @@
 
 StateManager::StateManager()
 {
-    currentState = new Splash(this);
-    nextState = currentState;
+    statesStack.push(new Splash(this));
+    nextState = statesStack.top();
 }
 
 StateManager::~StateManager()
@@ -24,57 +24,61 @@ bool StateManager::isRunning()
 void StateManager::input(sf::Event &event)
 {
     updateCurrentState();
-    currentState->input(event);
+    statesStack.top()->input(event);
 }
 
 void StateManager::update()
 {
-    currentState->update();
+    statesStack.top()->update();
 }
 
 void StateManager::render()
 {
-    currentState->render();
+    statesStack.top()->render();
 }
 
 
 
 void StateManager::pushState(IState *state)
 {
-    statesStack.push(currentState);
-    nextState = state;
+    statesStack.push(state);         // needs rewriting
+    nextState = state;               //
 }
 
 void StateManager::popState()
 {
-    nextState = statesStack.top();
-    statesStack.pop();
+    delete nextState;        // 
+    statesStack.pop();               // needs rewriting
+    nextState = statesStack.top();   //
 }
 
 void StateManager::resetState()
 {
-    nextState = NULL;
+    nextState = NULL;                //
 }
 
 void StateManager::setNextState(IState *state)
 {
-    nextState = state;
+    nextState = state;               // needs rewriting
 }
 
 void StateManager::updateCurrentState()
 {
-    if (currentState != nextState) {
+    if (statesStack.top() != nextState) {
+        /*
         if (!(statesStack.empty()) && nextState != statesStack.top()) {
             currentState = nextState;
             return;
-        }
-        delete currentState;
-        currentState = nextState;
+        }*/
+        /*delete */
+        delete statesStack.top();    // 
+        statesStack.pop();           // needs rewriting
+        statesStack.push(nextState); // 
     }
 }
 
 void StateManager::cleanUpStates()
 {
-    delete currentState;
+    //delete currentState;
     //delete states in stack
 }
