@@ -1,6 +1,6 @@
 #include "Game.h"
 
-Game::Game()
+Game::Game() : frame(0)
 {
     windowInit();
     modulesInit();
@@ -39,9 +39,7 @@ void Game::loop()
 {
     sf::Event event;
     while(isRunning()) {
-        while(window.pollEvent(event)) {
-            stateManager->input(event);
-        }
+        input(event);
         update();
         show();
     }
@@ -51,6 +49,13 @@ bool Game::isRunning()
 {
     return stateManager->isRunning();  
     //return window.isOpen();
+}
+
+void Game::input(sf::Event &event)
+{
+    while(window.pollEvent(event)) {
+        stateManager->input(event);
+    }
 }
 
 void Game::update()
@@ -65,6 +70,17 @@ void Game::show()
     window.display();
 }
 
+
+
+void Game::checkFPS()
+{
+    frame++;
+    if (clock.getElapsedTime().asMilliseconds() >= 1000) {
+        std::cout << frame << std::endl;
+        clock.restart();
+        frame = 0;
+    }
+}
 
 
 AssetManager* Game::getAssetManager()

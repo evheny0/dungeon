@@ -7,4 +7,6 @@ typedef char* StateID;
 typedef char* ImageID;
 typedef char* FontID;
 
+const int TILE_SIZE = 32;
+
 #endif

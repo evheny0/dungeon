@@ -13,13 +13,18 @@ class StateManager;
 
 
 class Game {
-  public:
     sf::RenderWindow window;
+  public:
     static AssetManager *assetManager;
 
   private:
     ConfigManager *configManager;
     StateManager *stateManager;
+
+  private:
+    sf::Clock clock;
+    sf::Time elapsedTime;
+    int frame;
 
   public:
     Game();
@@ -30,12 +35,12 @@ class Game {
     int run();
     void loop();
     bool isRunning();
-    void input();
+    void input(sf::Event &event);
     void update();
     void show();
+    void checkFPS();
 
     AssetManager *getAssetManager();
-    void hello();
 };
 
 

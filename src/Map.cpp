@@ -1,7 +1,7 @@
 #include "Map.h"
 
 
-Map::Map(int x, int y) : background(x, y)
+Map::Map(int x, int y) : background(x * TILE_SIZE, y * TILE_SIZE)
 {
     sizeX = x;
     sizeY = y;

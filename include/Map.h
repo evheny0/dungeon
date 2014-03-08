@@ -4,6 +4,7 @@
 #include <iostream>
 #include "Image.h"
 #include "Tileset.h"
+#include "CoreTypes.h"
 
 
 class MapCell {

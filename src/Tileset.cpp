@@ -2,7 +2,7 @@
 
 Tileset::Tileset(int x, int y)
 {
-    renderTexture.create(500, 500);
+    renderTexture.create(x, y);
     clear();
 }
 

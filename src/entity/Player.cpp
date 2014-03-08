@@ -48,7 +48,6 @@ void Player::moveLeft()
 
 void Player::show()
 {
-    std::cout << x << " " << y << "\n";
     image->setPosition(x, y);
     image->show();
 }
