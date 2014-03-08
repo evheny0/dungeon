@@ -5,9 +5,7 @@
 #include "ConfigManager.h"
 #include "StateManager.h"
 #include "Image.h"
-
-const int SCREEN_WIDTH = 960;
-const int SCREEN_HEIGHT = 540;
+#include "CoreTypes.h"
 
 class StateManager;
 

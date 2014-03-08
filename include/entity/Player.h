@@ -14,7 +14,8 @@ class Player {
   public:
     Player();
     ~Player();
-
+    int getX();
+    int getY();
     void setPosition(int x, int y);
 
     void setVelocity(int vel);

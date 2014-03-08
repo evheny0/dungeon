@@ -6,11 +6,14 @@ GameState::GameState(StateManager *stateManager) : IState(stateManager),
     floor = Game::assetManager->getImage(floorID);
     entityMap[10] = new Entity; 
     levelMap.render();
+    player.setPosition(100, 100);
+    camera.reset(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    camera.apply();
 }
 
 GameState::~GameState()
 {
-
+    camera.setDefault();
 }
 
 
@@ -23,10 +26,12 @@ void GameState::input(sf::Event &event)
 void GameState::update()
 {
     checkPlayerControls();
+    updateCamera();
 }
 
 void GameState::show()
 {
+    camera.apply();
     levelMap.show();
     player.show();
 }
@@ -58,4 +63,9 @@ void GameState::checkPlayerControls()
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
         player.moveRight();
     }
+}
+
+void GameState::updateCamera()
+{
+    camera.setCenter(player.getX(), player.getY());
 }

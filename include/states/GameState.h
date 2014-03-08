@@ -11,18 +11,19 @@
 #include "Image.h"
 #include "entity/Player.h"
 #include "Map.h"
+#include "Camera.h"
 #include <iostream>
 
-const int MAP_SIZE_X = 100;
-const int MAP_SIZE_Y = 100;
+const int MAP_SIZE_X = 50;
+const int MAP_SIZE_Y = 50;
 
 
 class GameState : public IState, public EventHandler {
     Image *floor;
     Player player;
     std::map<int, Entity *> entityMap;
-    //std::vector< std::vector<MapCell *> > levelMap;
     Map levelMap;
+    Camera camera;
   public:
     GameState(StateManager *stateManager);
     ~GameState();
@@ -35,10 +36,8 @@ class GameState : public IState, public EventHandler {
     void eventKeyPressed(sf::Event::KeyEvent &key);
 
     void checkPlayerControls();
+    void updateCamera();
 };
-
-
-
 
 
 #endif // GAME_STATE_H

@@ -9,10 +9,18 @@ Player::Player()
 
 Player::~Player()
 {
-
+    
 }
 
+int Player::getX()
+{
+    return x;
+}
 
+int Player::getY()
+{
+    return y;
+}
 
 void Player::setPosition(int x, int y)
 {

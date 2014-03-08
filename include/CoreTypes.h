@@ -7,6 +7,9 @@ typedef char* StateID;
 typedef char* ImageID;
 typedef char* FontID;
 
+const int SCREEN_WIDTH = 960;
+const int SCREEN_HEIGHT = 540;
+
 const int TILE_SIZE = 32;
 
 #endif
