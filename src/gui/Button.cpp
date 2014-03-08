@@ -80,7 +80,7 @@ void Button::setInactive()
     isActive = false;
 }
 
-void Button::render()
+void Button::show()
 {
     if (isActive) {
         activeImage->show();

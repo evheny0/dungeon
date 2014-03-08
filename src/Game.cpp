@@ -16,8 +16,7 @@ void Game::modulesInit()
 void Game::windowInit()
 {
     window.create(sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "Dungeon");
-    Image::window = &window;
-    Text::window = &window;
+    Drawable::window = &window;
     window.setVerticalSyncEnabled(true);
 }
 
@@ -44,7 +43,7 @@ void Game::loop()
             stateManager->input(event);
         }
         update();
-        render();
+        show();
     }
 }
 
@@ -59,10 +58,10 @@ void Game::update()
     stateManager->update();
 }
 
-void Game::render()
+void Game::show()
 {
     window.clear();
-    stateManager->render();
+    stateManager->show();
     window.display();
 }
 

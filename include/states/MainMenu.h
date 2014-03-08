@@ -23,7 +23,7 @@ class MainMenu : public IState, public EventHandler {
   public:
     void input(sf::Event &event);
     void update();
-    void render();
+    void show();
 
     void onExit();
     void onSettings();

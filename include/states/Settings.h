@@ -18,7 +18,7 @@ class Settings : public IState, public EventHandler {
 
     void input(sf::Event &event);
     void update();
-    void render();
+    void show();
 
     void onBackButton();
 

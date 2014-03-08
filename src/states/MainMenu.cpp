@@ -43,10 +43,10 @@ void MainMenu::update()
 
 }
 
-void MainMenu::render()
+void MainMenu::show()
 {
     for (it = buttons.begin(); it != buttons.end(); ++it) {
-        (*it)->render();
+        (*it)->show();
     }
 }
 

@@ -17,6 +17,11 @@ Image::~Image()
 
 }
 
+sf::Sprite &Image::getSfmlSprite()
+{
+    return sprite;
+}
+
 void Image::setPosition(int x, int y)
 {
     sprite.setPosition(x, y);

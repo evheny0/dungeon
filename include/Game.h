@@ -32,7 +32,7 @@ class Game {
     bool isRunning();
     void input();
     void update();
-    void render();
+    void show();
 
     AssetManager *getAssetManager();
     void hello();

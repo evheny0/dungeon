@@ -29,7 +29,7 @@ class Button {  // : public Drawable
     void move(int x, int y);
     void setActive();
     void setInactive();
-    void render();
+    void show();
 };
 
 #endif // BUTTON_H

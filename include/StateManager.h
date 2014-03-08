@@ -19,7 +19,7 @@ class StateManager {
     bool isRunning();
     void input(sf::Event &event);
     void update();
-    void render();
+    void show();
     void pushState(IState *state);
     void popState();
     void resetState();

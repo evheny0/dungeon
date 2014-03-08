@@ -3,18 +3,18 @@
 
 #include <string>
 #include <SFML/Graphics.hpp>
+#include "Drawable.h"
 
 
-class Image {
+class Image : public Drawable {
     std::string path;
     sf::Texture texture;
     sf::Sprite sprite;
   public:
-    static sf::RenderWindow *window;
-  public:
     Image(std::string path);
     Image(sf::Texture &texture);
     ~Image();
+    sf::Sprite &getSfmlSprite();
     void setPosition(int x, int y);
     void move(int x, int y);
     void show();

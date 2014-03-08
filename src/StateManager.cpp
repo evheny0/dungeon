@@ -32,9 +32,9 @@ void StateManager::update()
     statesStack.top()->update();
 }
 
-void StateManager::render()
+void StateManager::show()
 {
-    statesStack.top()->render();
+    statesStack.top()->show();
 }
 
 

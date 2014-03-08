@@ -15,7 +15,7 @@ class IState {
     
     virtual void input(sf::Event &event) = 0;
     virtual void update() = 0;
-    virtual void render() = 0;
+    virtual void show() = 0;
     virtual IState *nextState() { };
 };
 

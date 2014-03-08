@@ -23,7 +23,7 @@ void Splash::update()
     }
 }
 
-void Splash::render()
+void Splash::show()
 {
     splash->setPosition(0, 0);
     splash->show();

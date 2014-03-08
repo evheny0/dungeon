@@ -5,6 +5,7 @@
 #include "Assets.h"
 #include "BasicHandler.h"
 #include "Image.h"
+#include "Drawable.h"
 
 
 class GraphicsHandler : public BasicHandler {

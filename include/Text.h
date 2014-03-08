@@ -3,14 +3,12 @@
 
 #include <string>
 #include <SFML/Graphics.hpp>
+#include "Drawable.h"
 
 
-class Text {
+class Text : public Drawable {
     sf::Font *font;
     sf::Text text;
-
-  public:
-    static sf::RenderWindow *window;
 
   public:
     Text();

@@ -27,9 +27,9 @@ void Settings::update()
 
 }
 
-void Settings::render()
+void Settings::show()
 {
-    backButton->render();
+    backButton->show();
 }
 
 

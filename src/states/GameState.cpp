@@ -1,9 +1,11 @@
 #include "states/GameState.h"
 
-GameState::GameState(StateManager *stateManager) : IState(stateManager)
+GameState::GameState(StateManager *stateManager) : IState(stateManager),
+                                                   levelMap(MAP_SIZE_X, MAP_SIZE_Y)
 {
     floor = Game::assetManager->getImage(floorID);
-
+    entityMap[10] = new Entity; 
+    levelMap.render();
 }
 
 GameState::~GameState()
@@ -20,18 +22,12 @@ void GameState::input(sf::Event &event)
 
 void GameState::update()
 {
-
+    checkPlayerControls();
 }
 
-void GameState::render()
+void GameState::show()
 {
-    for (int i = 0; i < 20; i++) {
-        for (int j = 0; j < 20; j++) {
-            floor->setPosition(i * 32, j * 32);
-            floor->show();
-        }
-    }
-    player.setPosition(10, 10);
+    levelMap.show();
     player.show();
 }
 
@@ -42,6 +38,24 @@ void GameState::eventClosed()
     stateManager->resetState();
 }
 
+void GameState::eventKeyPressed(sf::Event::KeyEvent &key)
+{
+
+}
 
 
-
+void GameState::checkPlayerControls()
+{
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
+        player.moveUp();
+    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
+        player.moveLeft();
+    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
+        player.moveDown();
+    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
+        player.moveRight();
+    }
+}

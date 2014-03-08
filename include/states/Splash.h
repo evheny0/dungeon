@@ -19,7 +19,7 @@ class Splash : public IState, public EventHandler {
     ~Splash();
     void input(sf::Event &event);
     void update();
-    void render();
+    void show();
     void eventClosed();
 };
 
