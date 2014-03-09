@@ -2,7 +2,10 @@
 
 Player::Player()
 {
-    image = Game::assetManager->getImage(charachterID);
+    stayRight = Game::assetManager->getImage(stayRightID);
+    stayLeft = Game::assetManager->getImage(stayLeftID);
+    currentImage = stayRight;
+    initAnimation();
     setVelocity(3);
     setPosition(0, 0);
     stop();
@@ -11,6 +14,18 @@ Player::Player()
 Player::~Player()
 {
     
+}
+
+void Player::initAnimation()
+{
+    moveRightAnimation = new Animation(*(Game::assetManager->getImage(moveRightID)));
+    moveLeftAnimation = new Animation(*(Game::assetManager->getImage(moveLeftID)));
+    for (int i = 0; i < 8; i++) {
+        moveRightAnimation->addFrame(i * 32, 0, 32, 82);
+        moveLeftAnimation->addFrame(i * 32, 0, 32, 82);
+    }
+    moveRightAnimation->play();
+    moveLeftAnimation->play();
 }
 
 int Player::getX()
@@ -27,7 +42,6 @@ void Player::setPosition(int x, int y)
 {
     this->x = x;
     this->y = y;
-    image->setPosition(x, y);
 }
 
 void Player::setVelocity(int vel)
@@ -45,41 +59,74 @@ void Player::stop()
 void Player::runUp()
 {
     dy -= velocity;
+    if (currentImage == stayRight || currentImage == moveRightAnimation) {
+        currentImage = moveRightAnimation;
+    } else {
+        currentImage = moveLeftAnimation;
+    }
 }
 
 void Player::runDown()
 {
     dy += velocity;
+    if (currentImage == stayLeft || currentImage == moveLeftAnimation) {
+        currentImage = moveLeftAnimation;
+    } else {
+        currentImage = moveRightAnimation;
+    }
 }
 
 void Player::runRight()
 {
     dx += velocity;
+    currentImage = moveRightAnimation;
 }
 
 void Player::runLeft()
 {
     dx -= velocity;
+    currentImage = moveLeftAnimation;
 }
+
 
 void Player::stopUp()
 {
     dy += velocity;
+    if (dx == 0) {
+        if (currentImage == moveLeftAnimation) {
+            currentImage = stayLeft;
+        } else {
+            currentImage = stayRight;
+        }
+    }
 }
 
 void Player::stopDown()
 {
     dy -= velocity;
+    if (dx == 0) {
+        if (currentImage == moveLeftAnimation) {
+            currentImage = stayLeft;
+        } else {
+            currentImage = stayRight;
+        }
+    }
 }
 
 void Player::stopRight()
 {
     dx -= velocity;
+    if (dy == 0) {
+        currentImage = stayRight;
+    }
 }
 
 void Player::stopLeft()
 {
     dx += velocity;
+    if (dy == 0) {
+        currentImage = stayLeft;
+    }
 }
 
 void Player::move()
@@ -91,6 +138,6 @@ void Player::move()
 
 void Player::show()
 {
-    image->setPosition(x, y);
-    image->show();
+    currentImage->setPosition(x, y);
+    currentImage->show();
 }

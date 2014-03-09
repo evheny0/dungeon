@@ -36,7 +36,6 @@ class GameState : public IState, public EventHandler {
     void eventKeyPressed(sf::Event::KeyEvent &key);
     void eventKeyReleased(sf::Event::KeyEvent &key);
 
-    void checkPlayerControls();
     void updateCamera();
 };
 

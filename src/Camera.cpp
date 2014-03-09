@@ -30,11 +30,10 @@ void Camera::setViewport(int x, int y, int width, int height)
 {
     view.setViewport(sf::FloatRect(x, y, width, height));
 }
-#include <iostream>
+
 void Camera::apply()
 {
     window->setView(view);
-    std::cout << view.getCenter().x << " " << view.getCenter().y << "\n";
 }
 
 void Camera::move(int x, int y)

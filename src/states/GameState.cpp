@@ -25,7 +25,6 @@ void GameState::input(sf::Event &event)
 
 void GameState::update()
 {
-    //checkPlayerControls();
     player.move();
     updateCamera();
 }
@@ -48,7 +47,6 @@ void GameState::eventKeyPressed(sf::Event::KeyEvent &key)
 {
     switch (key.code) {
     case sf::Keyboard::W:
-        std::cout << "W\n";
         player.runUp();
         break;
     case sf::Keyboard::A:
@@ -83,22 +81,6 @@ void GameState::eventKeyReleased(sf::Event::KeyEvent &key)
 }
 
 
-
-void GameState::checkPlayerControls()
-{/*
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
-        player.moveUp();
-    }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-        player.moveLeft();
-    }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-        player.moveDown();
-    }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-        player.moveRight();
-    }*/
-}
 
 void GameState::updateCamera()
 {

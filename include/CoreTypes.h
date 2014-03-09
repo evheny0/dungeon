@@ -12,4 +12,6 @@ const int SCREEN_HEIGHT = 540;
 
 const int TILE_SIZE = 32;
 
+const int FRAME_TIME = 100;  // milliseconds
+
 #endif

@@ -3,10 +3,13 @@
 GraphicsHandler::GraphicsHandler()
 {
     textures[splashID] = newTexture(splashID);
-    textures[charachterID] = newTexture(charachterID);
     textures[buttonID] = newTexture(buttonID);
     textures[button_inactiveID] = newTexture(button_inactiveID);
     textures[floorID] = newTexture(floorID);
+    textures[moveRightID] = newTexture(moveRightID);
+    textures[moveLeftID] = newTexture(moveLeftID);
+    textures[stayRightID] = newTexture(stayRightID);
+    textures[stayLeftID] = newTexture(stayLeftID);
 }
 
 GraphicsHandler::~GraphicsHandler()

@@ -4,17 +4,23 @@
 #include <vector>
 #include "Assets.h"
 #include "graphic/Image.h"
+#include "graphic/Animation.h"
 #include "Entity.h"
 
 
 class Player {
-    Image *image;
+    Image *stayRight;
+    Image *stayLeft;
+    Animation *moveRightAnimation;
+    Animation *moveLeftAnimation;
+    Image *currentImage;
     int velocity;
-    int x, y;   // coords
-    int dx, dy; // offset for move
+    int x, y;     // coords
+    int dx, dy;   // offset for move
   public:
     Player();
     ~Player();
+    void initAnimation();
     int getX();
     int getY();
     void setPosition(int x, int y);

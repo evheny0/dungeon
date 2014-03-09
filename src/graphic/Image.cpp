@@ -12,6 +12,12 @@ Image::Image(sf::Texture &texture)
     sprite.setTexture(texture);
 }
 
+Image::Image(const Image &copy)
+{
+    this->texture = copy.texture;
+    this->sprite = copy.sprite;
+}
+
 Image::~Image()
 {
 
