@@ -5,7 +5,7 @@
 #include "states/IState.h"
 
 #include "EventHandler.h"
-#include "Image.h"
+#include "graphic/Image.h"
 #include "Assets.h"
 
 #include "MainMenu.h"

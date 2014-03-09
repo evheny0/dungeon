@@ -8,7 +8,7 @@
 #include "gui/Button.h"
 #include "EventHandler.h"
 #include "Functor.h"
-#include "Image.h"
+#include "graphic/Image.h"
 #include "entity/Player.h"
 #include "Map.h"
 #include "Camera.h"
@@ -34,6 +34,7 @@ class GameState : public IState, public EventHandler {
   private:
     void eventClosed();
     void eventKeyPressed(sf::Event::KeyEvent &key);
+    void eventKeyReleased(sf::Event::KeyEvent &key);
 
     void checkPlayerControls();
     void updateCamera();

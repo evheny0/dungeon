@@ -5,6 +5,7 @@ Player::Player()
     image = Game::assetManager->getImage(charachterID);
     setVelocity(3);
     setPosition(0, 0);
+    stop();
 }
 
 Player::~Player()
@@ -34,25 +35,59 @@ void Player::setVelocity(int vel)
     velocity = vel;
 }
 
-void Player::moveUp()
+
+void Player::stop()
 {
-    y -= velocity;
+    dx = 0;
+    dy = 0;
 }
 
-void Player::moveDown()
+void Player::runUp()
 {
-    y += velocity;
+    dy -= velocity;
 }
 
-void Player::moveRight()
+void Player::runDown()
 {
-    x += velocity;
+    dy += velocity;
 }
 
-void Player::moveLeft()
+void Player::runRight()
 {
-    x -= velocity;
+    dx += velocity;
 }
+
+void Player::runLeft()
+{
+    dx -= velocity;
+}
+
+void Player::stopUp()
+{
+    dy += velocity;
+}
+
+void Player::stopDown()
+{
+    dy -= velocity;
+}
+
+void Player::stopRight()
+{
+    dx -= velocity;
+}
+
+void Player::stopLeft()
+{
+    dx += velocity;
+}
+
+void Player::move()
+{
+    y += dy;
+    x += dx;
+}
+
 
 void Player::show()
 {

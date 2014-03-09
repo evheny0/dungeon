@@ -2,8 +2,8 @@
 #define MAP_H
 
 #include <iostream>
-#include "Image.h"
-#include "Tileset.h"
+#include "graphic/Image.h"
+#include "graphic/Tileset.h"
 #include "CoreTypes.h"
 
 

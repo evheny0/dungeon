@@ -3,8 +3,8 @@
 
 #include "GraphicsHandler.h"
 #include "FontHandler.h"
-#include "Image.h"
-#include "Text.h"
+#include "graphic/Image.h"
+#include "graphic/Text.h"
 
 
 class AssetManager {

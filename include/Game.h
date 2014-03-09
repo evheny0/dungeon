@@ -4,7 +4,7 @@
 #include "AssetManager.h"
 #include "ConfigManager.h"
 #include "StateManager.h"
-#include "Image.h"
+#include "graphic/Image.h"
 #include "CoreTypes.h"
 
 class StateManager;

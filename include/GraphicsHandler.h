@@ -4,8 +4,8 @@
 #include <map>
 #include "Assets.h"
 #include "BasicHandler.h"
-#include "Image.h"
-#include "Drawable.h"
+#include "graphic/Image.h"
+#include "graphic/Drawable.h"
 
 
 class GraphicsHandler : public BasicHandler {

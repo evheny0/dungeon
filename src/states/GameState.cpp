@@ -25,7 +25,8 @@ void GameState::input(sf::Event &event)
 
 void GameState::update()
 {
-    checkPlayerControls();
+    //checkPlayerControls();
+    player.move();
     updateCamera();
 }
 
@@ -45,12 +46,46 @@ void GameState::eventClosed()
 
 void GameState::eventKeyPressed(sf::Event::KeyEvent &key)
 {
+    switch (key.code) {
+    case sf::Keyboard::W:
+        std::cout << "W\n";
+        player.runUp();
+        break;
+    case sf::Keyboard::A:
+        player.runLeft();
+        break;
+    case sf::Keyboard::S:
+        player.runDown();
+        break;
+    case sf::Keyboard::D:
+        player.runRight();
+        break;
+    }
+}
+
+void GameState::eventKeyReleased(sf::Event::KeyEvent &key)
+{
+    switch (key.code) {
+    case sf::Keyboard::W:
+        player.stopUp();
+        break;
+    case sf::Keyboard::A:
+        player.stopLeft();
+        break;
+    case sf::Keyboard::S:
+        player.stopDown();
+        break;
+    case sf::Keyboard::D:
+        player.stopRight();
+        break;
+    }
 
 }
 
 
+
 void GameState::checkPlayerControls()
-{
+{/*
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
         player.moveUp();
     }
@@ -62,7 +97,7 @@ void GameState::checkPlayerControls()
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
         player.moveRight();
-    }
+    }*/
 }
 
 void GameState::updateCamera()

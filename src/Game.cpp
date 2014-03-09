@@ -18,6 +18,7 @@ void Game::windowInit()
     window.create(sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "Dungeon");
     Drawable::window = &window;
     window.setVerticalSyncEnabled(true);
+    window.setKeyRepeatEnabled(false);
 }
 
 Game::~Game()

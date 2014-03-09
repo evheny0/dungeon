@@ -2,7 +2,7 @@
 #define CAMERA_H
 
 #include <SFML/Graphics.hpp>
-#include "Drawable.h"
+#include "graphic/Drawable.h"
 
 class Camera : public Drawable {
     sf::View view;
