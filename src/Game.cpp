@@ -16,6 +16,7 @@ void Game::modulesInit()
 void Game::windowInit()
 {
     window.create(sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "Dungeon");
+    window.clear();
     Drawable::window = &window;
     window.setVerticalSyncEnabled(true);
     window.setKeyRepeatEnabled(false);
@@ -66,7 +67,7 @@ void Game::update()
 
 void Game::show()
 {
-    window.clear();
+    window.clear(sf::Color(24, 12, 28, 225));
     stateManager->show();
     window.display();
 }

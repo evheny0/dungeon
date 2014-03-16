@@ -24,6 +24,9 @@ class Map {
     int sizeX;
     int sizeY;
 
+    Image *wall;
+    Image *wallDown;
+    Image *wallSide;
     Image *floor;
     Tileset background;
   public:

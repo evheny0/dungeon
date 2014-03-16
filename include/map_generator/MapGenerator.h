@@ -11,11 +11,11 @@
     на каждой итерации берем случайную комнату и связываем с новой
 */
 
-const int SIZE_X = 50;
-const int SIZE_Y = 50;
+const int SIZE_X = 70;
+const int SIZE_Y = 70;
 const int NUM_OF_ROOMS = 10;
-const int MIN_SIZE_OF_ROOM = 3;
-const int MAX_SIZE_OF_ROOM = 15;
+const int MIN_SIZE_OF_ROOM = 10;
+const int MAX_SIZE_OF_ROOM = 20;
 
 const char EMPTY = ' ';
 const char WALL = '#';

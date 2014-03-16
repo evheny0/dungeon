@@ -8,7 +8,9 @@ Map::Map(int x, int y) : background(x * TILE_SIZE, y * TILE_SIZE)
     reallocValues();
     clear();
     floor = Game::assetManager->getImage(floorID);
-    //generate();
+    wall = Game::assetManager->getImage(wallID);
+    wallDown = Game::assetManager->getImage(wallDownID);
+    wallSide = Game::assetManager->getImage(wallSideID);
     render();
 }
 
@@ -26,6 +28,7 @@ void Map::generate(int seed)
 void Map::render()
 {
     int i, j;
+    background.clear(sf::Color(24, 12, 28, 225));
     for (i = 0; i < sizeY; i++) {
         for (j = 0; j < sizeX; j++) {
             switch (generator[i][j]) {
@@ -33,6 +36,13 @@ void Map::render()
                     background.draw(floor, i * 32, j * 32);
                     break;
                 case WALL:
+                    if (generator[i][j - 1] == FLOOR) {
+                        background.draw(wallDown, i * 32, j * 32);
+                    } else if (generator[i][j + 1] == FLOOR) {
+                        background.draw(wall, i * 32, j * 32);
+                    } else {
+                        background.draw(wallSide, i * 32, j * 32);
+                    }
                     break;
             }
         }

@@ -11,9 +11,9 @@ Tileset::~Tileset()
 
 }
 
-void Tileset::clear()
+void Tileset::clear(sf::Color color)
 {
-    renderTexture.clear();
+    renderTexture.clear(color);
 }
 
 void Tileset::draw(Image *image, int x, int y)

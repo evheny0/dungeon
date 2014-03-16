@@ -171,7 +171,7 @@ void MapGenerator::setEnd(Room newRoom)
 void MapGenerator::linkRooms(Room startRoom, Room endRoom)
 {
     /* 
-        need to get a random smth
+        need to get a random door
     */
     int i, j;
     Coord start, end;

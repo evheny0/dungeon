@@ -15,7 +15,7 @@ class Tileset : public Drawable {
   public:
     Tileset(int x, int y);
     ~Tileset();
-    void clear();
+    void clear(sf::Color color = sf::Color(0, 0, 0, 255));
     void draw(Image *image, int x, int y);
     void formImage();
     void show();

@@ -14,6 +14,9 @@ extern ImageID stayRightID;
 extern ImageID stayLeftID;
 
 extern ImageID floorID;
+extern ImageID wallID;
+extern ImageID wallDownID;
+extern ImageID wallSideID;
 
 extern FontID o4bID;
 extern FontID digiffitiID;
