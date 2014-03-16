@@ -5,6 +5,7 @@
 #include "graphic/Image.h"
 #include "graphic/Tileset.h"
 #include "CoreTypes.h"
+#include "map_generator/MapGenerator.h"
 
 
 class MapCell {
@@ -15,8 +16,11 @@ class MapCell {
 };
 
 class Map {
+    MapGenerator generator;
     MapCell **values;
     MapCell emptyCell;
+    MapCell wallCell;
+    MapCell floorCell;
     int sizeX;
     int sizeY;
 
@@ -25,10 +29,10 @@ class Map {
   public:
     Map(int x, int y);
     ~Map();
+    void generate(int seed = 0);
     void render();
     MapCell *operator[](int x);
     void clear();
-
     void show();
   private:
     void reallocValues();

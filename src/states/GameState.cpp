@@ -5,6 +5,7 @@ GameState::GameState(StateManager *stateManager) : IState(stateManager),
 {
     floor = Game::assetManager->getImage(floorID);
     entityMap[10] = new Entity; 
+    levelMap.generate();
     levelMap.render();
     player.setPosition(100, 100);
     camera.reset(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);

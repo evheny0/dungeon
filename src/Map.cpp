@@ -17,12 +17,24 @@ Map::~Map()
 
 }
 
+void Map::generate(int seed)
+{
+    generator.generate();
+    generator.show();
+}
+
 void Map::render()
 {
     int i, j;
     for (i = 0; i < sizeY; i++) {
         for (j = 0; j < sizeX; j++) {
-            background.draw(floor, i * 32, j * 32);
+            switch (generator[i][j]) {
+                case FLOOR:
+                    background.draw(floor, i * 32, j * 32);
+                    break;
+                case WALL:
+                    break;
+            }
         }
     }
     background.formImage();
@@ -32,7 +44,6 @@ MapCell *Map::operator[](int x)
 {
     return values[x];
 }
-
 
 void Map::clear()
 {
@@ -44,19 +55,15 @@ void Map::clear()
     }
 }
 
-
-
-void Map::show()
-{
-    background.show();
-}
-
-
-
 void Map::reallocValues()
 {
     values = new MapCell*[sizeX];
     for (int i = 0; i < sizeX; i++) {
         values[i] = new MapCell[sizeY];
     }
+}
+
+void Map::show()
+{
+    background.show();
 }

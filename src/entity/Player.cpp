@@ -6,7 +6,7 @@ Player::Player()
     stayLeft = Game::assetManager->getImage(stayLeftID);
     currentImage = stayRight;
     initAnimation();
-    setVelocity(3);
+    setVelocity(4);
     setPosition(0, 0);
     stop();
 }
