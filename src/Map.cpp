@@ -11,6 +11,7 @@ Map::Map(int x, int y) : background(x * TILE_SIZE, y * TILE_SIZE)
     wall = Game::assetManager->getImage(wallID);
     wallDown = Game::assetManager->getImage(wallDownID);
     wallSide = Game::assetManager->getImage(wallSideID);
+    door = Game::assetManager->getImage(doorID);
     render();
 }
 
@@ -28,22 +29,24 @@ void Map::generate(int seed)
 void Map::render()
 {
     int i, j;
-    background.clear(sf::Color(24, 12, 28, 225));
+    background.clear(sf::Color(8, 8, 28, 225));
     for (i = 0; i < sizeY; i++) {
         for (j = 0; j < sizeX; j++) {
             switch (generator[i][j]) {
                 case FLOOR:
-                    background.draw(floor, i * 32, j * 32);
+                case CORRIDOR:
+                    background.draw(floor, i * TILE_SIZE, j * TILE_SIZE);
                     break;
                 case WALL:
                     if (generator[i][j - 1] == FLOOR) {
-                        background.draw(wallDown, i * 32, j * 32);
-                    } else if (generator[i][j + 1] == FLOOR) {
-                        background.draw(wall, i * 32, j * 32);
-                    } else {
-                        background.draw(wallSide, i * 32, j * 32);
+                        background.draw(wallDown, i * TILE_SIZE, j * TILE_SIZE);
                     }
                     break;
+                case DOOR:
+                    background.draw(floor, i * TILE_SIZE, j * TILE_SIZE);
+                case START:
+                    startX = i;
+                    startY = j;
             }
         }
     }
@@ -76,4 +79,11 @@ void Map::reallocValues()
 void Map::show()
 {
     background.show();
+}
+
+bool Map::isIntersects(int x, int y)
+{
+    if (generator[x][y] == WALL) {  // need to rewrite
+        return true;
+    } return false;
 }

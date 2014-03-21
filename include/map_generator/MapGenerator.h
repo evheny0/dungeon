@@ -11,15 +11,16 @@
     на каждой итерации берем случайную комнату и связываем с новой
 */
 
-const int SIZE_X = 70;
-const int SIZE_Y = 70;
-const int NUM_OF_ROOMS = 10;
+const int SIZE_X = 100;
+const int SIZE_Y = 100;
+const int NUM_OF_ROOMS = 20;
 const int MIN_SIZE_OF_ROOM = 10;
 const int MAX_SIZE_OF_ROOM = 20;
 
 const char EMPTY = ' ';
 const char WALL = '#';
 const char FLOOR = '.';
+const char CORRIDOR = ':';
 const char DOOR = '+';
 const char START = 'S';
 const char END = 'E';
@@ -35,6 +36,7 @@ struct Coord {
     void operator+=(int value);
     void setRandom();
     friend Coord operator+(const Coord &coord, const int value);
+    friend Coord operator+(const Coord &first, const Coord &second);
 };
 
 class Room {
@@ -48,6 +50,8 @@ class Room {
     bool isInField();
     Coord getStart();
     Coord getEnd();
+    Coord getRandomDoor();
+    Coord getRandomCoord();
 };
 
 class MapGenerator {
@@ -68,6 +72,7 @@ class MapGenerator {
     void generateStartRoom();
     void setEnd(Room newRoom);
     void linkRooms(Room startRoom, Room endRoom);
+    bool findPath(Coord start, Coord end);
     void fillRoom(Room room);
     void fillFloor(Coord start, Coord end);
     void fillOutline(Coord start, Coord end);

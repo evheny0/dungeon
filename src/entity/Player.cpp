@@ -135,9 +135,15 @@ void Player::move()
     x += dx;
 }
 
+void Player::rollback()
+{
+    y -= dy;
+    x -= dx;
+}
+
 
 void Player::show()
 {
-    currentImage->setPosition(x, y);
+    currentImage->setPosition(x - (currentImage->getWidth() / 2), y - currentImage->getHeight());
     currentImage->show();
 }

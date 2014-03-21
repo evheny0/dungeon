@@ -42,4 +42,3 @@ void Text::show()
 {
     window->draw(text);
 }
-

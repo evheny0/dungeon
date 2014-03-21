@@ -19,6 +19,8 @@ void Camera::setDefault()
 void Camera::reset(int x, int y, int width, int height)
 {
     view.reset(sf::FloatRect(x, y, width, height));
+    //view.zoom(3);
+    //view.rotate(-30);
 }
 
 void Camera::rotate(int angle)

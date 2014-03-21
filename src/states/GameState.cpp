@@ -7,7 +7,7 @@ GameState::GameState(StateManager *stateManager) : IState(stateManager),
     entityMap[10] = new Entity; 
     levelMap.generate();
     levelMap.render();
-    player.setPosition(100, 100);
+    player.setPosition(levelMap.startX * TILE_SIZE, levelMap.startY * TILE_SIZE);
     camera.reset(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     camera.apply();
 }
@@ -15,7 +15,7 @@ GameState::GameState(StateManager *stateManager) : IState(stateManager),
 GameState::~GameState()
 {
     camera.setDefault();
-}
+} 
 
 
 
@@ -27,6 +27,9 @@ void GameState::input(sf::Event &event)
 void GameState::update()
 {
     player.move();
+    if (levelMap.isIntersects(player.getX() / TILE_SIZE, player.getY() / TILE_SIZE)) {
+        player.rollback();
+    }
     updateCamera();
 }
 

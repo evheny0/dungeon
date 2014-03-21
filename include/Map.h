@@ -24,10 +24,16 @@ class Map {
     int sizeX;
     int sizeY;
 
+  public:
+    int startX;
+    int startY;
+
+  private:
     Image *wall;
     Image *wallDown;
     Image *wallSide;
     Image *floor;
+    Image *door;
     Tileset background;
   public:
     Map(int x, int y);
@@ -37,6 +43,7 @@ class Map {
     MapCell *operator[](int x);
     void clear();
     void show();
+    bool isIntersects(int x, int y);
   private:
     void reallocValues();
 };

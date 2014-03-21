@@ -44,3 +44,13 @@ void Animation::show()
     window->draw(sprite);
     updateFrame();
 }
+
+int Animation::getWidth()
+{
+    return frames.begin()->width;
+}
+
+int Animation::getHeight()
+{
+    return frames.begin()->height;
+}

@@ -36,6 +36,7 @@ class Player {
     void stopRight();
     void stopLeft();
     void move();
+    void rollback();
 
     void show();
 };

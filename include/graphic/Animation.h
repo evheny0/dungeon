@@ -17,6 +17,9 @@ class Animation : public Image {
     void addFrame(int x, int y, int width, int height);
     void play();
     void updateFrame();
+    int getWidth();
+    int getHeight();
+
 
     void show();
 };

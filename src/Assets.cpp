@@ -12,6 +12,7 @@ ImageID floorID = "img/floor.png";
 ImageID wallID = "img/wall.png";
 ImageID wallDownID = "img/wall_down.png";
 ImageID wallSideID = "img/wall_side.png";
+ImageID doorID = "img/door.png";
 
 FontID o4bID = "font/04B.TTF";
 FontID digiffitiID = "font/digiffiti.ttf";

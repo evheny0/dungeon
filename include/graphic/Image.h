@@ -20,9 +20,10 @@ class Image : public Drawable {
     void setPosition(int x, int y);
     void move(int x, int y);
     void show();
-    int getWidth();
-    int getHeight();
     sf::Rect<int> getTextureRect();
+
+    virtual int getWidth();
+    virtual int getHeight();
 };
 
 

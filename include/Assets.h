@@ -17,6 +17,7 @@ extern ImageID floorID;
 extern ImageID wallID;
 extern ImageID wallDownID;
 extern ImageID wallSideID;
+extern ImageID doorID;
 
 extern FontID o4bID;
 extern FontID digiffitiID;

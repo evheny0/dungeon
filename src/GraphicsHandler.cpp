@@ -10,6 +10,7 @@ GraphicsHandler::GraphicsHandler()
     textures[wallID] = newTexture(wallID);
     textures[wallDownID] = newTexture(wallDownID);
     textures[wallSideID] = newTexture(wallSideID);
+    textures[doorID] = newTexture(doorID);
 
     textures[moveRightID] = newTexture(moveRightID);
     textures[moveLeftID] = newTexture(moveLeftID);
