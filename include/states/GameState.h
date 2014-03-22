@@ -14,8 +14,8 @@
 #include "Camera.h"
 #include <iostream>
 
-const int MAP_SIZE_X = 100;
-const int MAP_SIZE_Y = 100;
+const int MAP_SIZE_X = 70;
+const int MAP_SIZE_Y = 70;
 
 
 class GameState : public IState, public EventHandler {

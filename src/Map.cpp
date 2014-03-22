@@ -47,8 +47,26 @@ void Map::render()
                 case FLOOR:
                 case CORRIDOR:
                     background.draw(floor, i * TILE_SIZE, j * TILE_SIZE);
+
                     if (generator[i][j - 1] == WALL) {
-                        background.draw(border_up, i * TILE_SIZE, j * TILE_SIZE);
+                        //background.draw(border_up, i * TILE_SIZE, j * TILE_SIZE);
+
+                        // need another tileset for walls
+                        // drawing walls
+                        switch (getRandomNumber(0, 3)) {
+                        case 0:
+                            background.draw(wall, i * TILE_SIZE, (j - 1) * TILE_SIZE);
+                            break;
+                        case 1:
+                            background.draw(wall, i * TILE_SIZE, (j - 1) * TILE_SIZE);
+                            background.draw(wall, i * TILE_SIZE, (j - 2) * TILE_SIZE);
+                            break;
+                        case 2:
+                            background.draw(wall, i * TILE_SIZE, (j - 1) * TILE_SIZE);
+                            background.draw(wall, i * TILE_SIZE, (j - 2) * TILE_SIZE);
+                            background.draw(wall, i * TILE_SIZE, (j - 3) * TILE_SIZE);
+                            break;
+                        }
                     }
                     if (generator[i - 1][j] == WALL) {
                         background.draw(border_left, i * TILE_SIZE, j * TILE_SIZE);
@@ -57,18 +75,19 @@ void Map::render()
                 case WALL:
                     if (generator[i][j - 1] == FLOOR) {
                         background.draw(wallDown, i * TILE_SIZE, j * TILE_SIZE);
-                        background.draw(border_down, i * TILE_SIZE, (j - 1) * TILE_SIZE);
+                        //background.draw(border_down, i * TILE_SIZE, (j - 1) * TILE_SIZE);
                     }
                     if (generator[i - 1][j] == FLOOR) {
                         background.draw(border_right, (i - 1) * TILE_SIZE, j * TILE_SIZE);
                     }
                     break;
-                case DOOR:
-                    background.draw(floor, i * TILE_SIZE, j * TILE_SIZE);
-                    break;
                 case START:
                     startX = i;
                     startY = j;
+                case END:
+                    background.draw(floor, i * TILE_SIZE, j * TILE_SIZE);
+                    background.draw(door, i * TILE_SIZE, (j - 2) * TILE_SIZE);
+                    break;
             }
         }
     }

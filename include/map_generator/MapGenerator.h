@@ -11,8 +11,8 @@
     на каждой итерации берем случайную комнату и связываем с новой
 */
 
-const int SIZE_X = 100;
-const int SIZE_Y = 100;
+const int SIZE_X = 70;
+const int SIZE_Y = 70;
 const int NUM_OF_ROOMS = 10;
 const int MIN_SIZE_OF_ROOM = 10;
 const int MAX_SIZE_OF_ROOM = 20;
@@ -24,6 +24,9 @@ const char CORRIDOR = ':';
 const char DOOR = '+';
 const char START = 'S';
 const char END = 'E';
+
+
+int getRandomNumber(int min, int max);
 
 
 struct Coord {
@@ -39,7 +42,7 @@ struct Coord {
     friend Coord operator+(const Coord &first, const Coord &second);
 };
 
-class Room {
+class Room {            // set inheritance from sf::Rect
     Coord start, end;
     int roomSize;
   public:
@@ -50,7 +53,6 @@ class Room {
     bool isInField();
     Coord getStart();
     Coord getEnd();
-    Coord getRandomDoor();
     Coord getRandomCoord();
 };
 
@@ -69,10 +71,11 @@ class MapGenerator {
     void show();
     Room getRandomRoom();
     Room generateNewRoom();
-    void generateStartRoom();
     void setEnd(Room newRoom);
+    void setStart(Room room);
     void linkRooms(Room startRoom, Room endRoom);
-    bool findPath(Coord start, Coord end);
+    void makeHCorridor(int start, int end, int y);
+    void makeVCorridor(int start, int end, int x);
     void fillRoom(Room room);
     void fillFloor(Coord start, Coord end);
     void fillOutline(Coord start, Coord end);

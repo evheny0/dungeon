@@ -82,7 +82,7 @@ void Room::generate()
 
 bool Room::isInField()
 {
-    if (end.x > SIZE_X || end.y > SIZE_Y) {
+    if (end.x >= SIZE_X || end.y >= SIZE_Y) {
         return false;
     }
     return true;
@@ -96,33 +96,6 @@ Coord Room::getStart()
 Coord Room::getEnd()
 {
     return end;
-}
-
-Coord Room::getRandomDoor()
-{
-    Coord returnValue;
-    Coord offset;
-    returnValue.x = getRandomNumber(start.x, end.x);
-    returnValue.y = getRandomNumber(start.y, end.y);
-    if (getRandomNumber(0, 1)) {       // detect, at which wall door will be
-        if (getRandomNumber(0, 1)) {
-            returnValue.x = start.x;
-            //offset.x = -1;
-        } else {
-            returnValue.x = end.x;
-            //offset.x = 1;
-        }
-    } else {
-        if (getRandomNumber(0, 1)) {
-            returnValue.y = start.y;
-            //offset.y = -1;
-        } else {
-            returnValue.y = end.y;
-            //offset.y = 1;
-        }
-    }
-    //values[returnValue.x][returnValue.y] = DOOR;
-    return returnValue/* + offset*/;
 }
 
 Coord Room::getRandomCoord()
@@ -198,68 +171,55 @@ Room MapGenerator::generateNewRoom()
     return room;
 }
 
-void MapGenerator::generateStartRoom()
+void MapGenerator::setEnd(Room room)
 {
-    generateNewRoom();
-    levelStart = rooms.front().getStart() + 1;
-    values[levelStart.x][levelStart.y] = START;
+    levelEnd = room.getStart() + 1;
+    values[++levelEnd.x][levelEnd.y] = END;
 }
 
-void MapGenerator::setEnd(Room newRoom)
+void MapGenerator::setStart(Room room)
 {
-    levelEnd = newRoom.getStart() + 1;
-    values[levelEnd.x][levelEnd.y] = END;
+    levelStart = room.getStart() + 1;
+    values[++levelStart.x][levelStart.y] = START;
 }
 
 void MapGenerator::linkRooms(Room startRoom, Room endRoom)
 {
-    int i, j, startY;
-    //Coord start = startRoom.getRandomDoor();
-    //Coord end = endRoom.getRandomDoor();
+    int xPos;
     Coord start = startRoom.getRandomCoord();
     Coord end = endRoom.getRandomCoord();
+
     if (start.x > end.x) {
         std::swap(start, end);
     }
-    for (i = start.x; i <= end.x; i++) {
-        values[i][start.y] = FLOOR;
-        values[i][start.y - 1] = FLOOR;
-        values[i][start.y + 1] = FLOOR; 
-        (values[i][start.y + 2] == EMPTY) ? (values[i][start.y + 2] = WALL) : 0;
-        (values[i][start.y - 2] == EMPTY) ? (values[i][start.y - 2] = WALL) : 0;
-    }
+    makeHCorridor(start.x, end.x, start.y);
 
+    xPos = end.x - 1;
     if (start.y > end.y) {
         std::swap(start, end);
     }
-    i -= 2;
-    for (j = start.y; j <= end.y + 1; j++) {
-        values[i][j] = FLOOR;
-        values[i + 1][j] = FLOOR;
-        values[i - 1][j] = FLOOR;
-        (values[i + 2][j] == EMPTY) ? (values[i + 2][j] = WALL) : 0;
-        (values[i - 2][j] == EMPTY) ? (values[i - 2][j] = WALL) : 0;
-    }
+    makeVCorridor(start.y - 1, end.y + 1, xPos);
 } 
 
-//void MapGenerator::makeVCorridor
-
-bool MapGenerator::findPath(Coord start, Coord end)  //not start but current
+void MapGenerator::makeHCorridor(int start, int end, int y)
 {
-    if (values[start.x][start.y] == DOOR) {
-        return true;
+    for (int i = start; i <= end; i++) {
+        (values[i][y - 2] == EMPTY) ? (values[i][y - 2] = WALL) : 0;
+        values[i][y - 1] = FLOOR;
+        values[i][y] = FLOOR;
+        values[i][y + 1] = FLOOR; 
+        (values[i][y + 2] == EMPTY) ? (values[i][y + 2] = WALL) : 0;
     }
-    if (values[start.x][start.y] != EMPTY) {
-        return false;
-    }
-    if (start.x < end.x) {
-        start.x++;
+}
 
-        findPath(start, end);
-    } else if (start.x > end.x) {
-        start.x--;
-    } else {
-        start.y--;
+void MapGenerator::makeVCorridor(int start, int end, int x)
+{
+    for (int i = start; i <= end; i++) {
+        (values[x - 2][i] == EMPTY) ? (values[x - 2][i] = WALL) : 0;
+        values[x - 1][i] = FLOOR;
+        values[x][i] = FLOOR;
+        values[x + 1][i] = FLOOR;
+        (values[x + 2][i] == EMPTY) ? (values[x + 2][i] = WALL) : 0;
     }
 }
 
@@ -295,15 +255,13 @@ void MapGenerator::fillOutline(Coord start, Coord end)
 void MapGenerator::generate()
 {
     Room newRoom;
-    generateStartRoom();
+    generateNewRoom();
     for (int i = 0; i < NUM_OF_ROOMS; i++) {
         newRoom = generateNewRoom();
         linkRooms(newRoom, getRandomRoom());
     }
     setEnd(newRoom);
-    ///////
-    values[levelStart.x][levelStart.y] = START;
-    ///////
+    setStart(getRandomRoom());
 }
 
 void MapGenerator::show()
