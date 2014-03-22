@@ -34,10 +34,16 @@ class Map {
     Image *wallSide;
     Image *floor;
     Image *door;
+
+    Image *border_up;
+    Image *border_down;
+    Image *border_right;
+    Image *border_left;
     Tileset background;
   public:
     Map(int x, int y);
     ~Map();
+    void loadImages();
     void generate(int seed = 0);
     void render();
     MapCell *operator[](int x);

@@ -13,7 +13,7 @@
 
 const int SIZE_X = 100;
 const int SIZE_Y = 100;
-const int NUM_OF_ROOMS = 20;
+const int NUM_OF_ROOMS = 10;
 const int MIN_SIZE_OF_ROOM = 10;
 const int MAX_SIZE_OF_ROOM = 20;
 

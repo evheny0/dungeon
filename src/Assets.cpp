@@ -14,6 +14,11 @@ ImageID wallDownID = "img/wall_down.png";
 ImageID wallSideID = "img/wall_side.png";
 ImageID doorID = "img/door.png";
 
+ImageID borderUpID = "img/border_up.png";
+ImageID borderDownID = "img/border_down.png";
+ImageID borderRightID = "img/border_right.png";
+ImageID borderLeftID = "img/border_left.png";
+
 FontID o4bID = "font/04B.TTF";
 FontID digiffitiID = "font/digiffiti.ttf";
 FontID m12ID = "font/m12.TTF";

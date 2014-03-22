@@ -7,16 +7,27 @@ Map::Map(int x, int y) : background(x * TILE_SIZE, y * TILE_SIZE)
     sizeY = y;
     reallocValues();
     clear();
-    floor = Game::assetManager->getImage(floorID);
-    wall = Game::assetManager->getImage(wallID);
-    wallDown = Game::assetManager->getImage(wallDownID);
-    wallSide = Game::assetManager->getImage(wallSideID);
-    door = Game::assetManager->getImage(doorID);
+    loadImages();
     render();
 }
 
 Map::~Map()
 {
+
+}
+
+void Map::loadImages()
+{
+    floor = Game::assetManager->getImage(floorID);
+    wall = Game::assetManager->getImage(wallID);
+    wallDown = Game::assetManager->getImage(wallDownID);
+    wallSide = Game::assetManager->getImage(wallSideID);
+    door = Game::assetManager->getImage(doorID);
+
+    border_up = Game::assetManager->getImage(borderUpID);
+    border_down = Game::assetManager->getImage(borderDownID);
+    border_right = Game::assetManager->getImage(borderRightID);
+    border_left = Game::assetManager->getImage(borderLeftID);
 
 }
 
@@ -36,14 +47,25 @@ void Map::render()
                 case FLOOR:
                 case CORRIDOR:
                     background.draw(floor, i * TILE_SIZE, j * TILE_SIZE);
+                    if (generator[i][j - 1] == WALL) {
+                        background.draw(border_up, i * TILE_SIZE, j * TILE_SIZE);
+                    }
+                    if (generator[i - 1][j] == WALL) {
+                        background.draw(border_left, i * TILE_SIZE, j * TILE_SIZE);
+                    }
                     break;
                 case WALL:
                     if (generator[i][j - 1] == FLOOR) {
                         background.draw(wallDown, i * TILE_SIZE, j * TILE_SIZE);
+                        background.draw(border_down, i * TILE_SIZE, (j - 1) * TILE_SIZE);
+                    }
+                    if (generator[i - 1][j] == FLOOR) {
+                        background.draw(border_right, (i - 1) * TILE_SIZE, j * TILE_SIZE);
                     }
                     break;
                 case DOOR:
                     background.draw(floor, i * TILE_SIZE, j * TILE_SIZE);
+                    break;
                 case START:
                     startX = i;
                     startY = j;

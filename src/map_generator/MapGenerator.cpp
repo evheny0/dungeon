@@ -128,8 +128,8 @@ Coord Room::getRandomDoor()
 Coord Room::getRandomCoord()
 {
     Coord returnValue;
-    returnValue.x = getRandomNumber(start.x + 1, end.x - 1);
-    returnValue.y = getRandomNumber(start.y + 1, end.y - 1);
+    returnValue.x = getRandomNumber(start.x + 2, end.x - 2);
+    returnValue.y = getRandomNumber(start.y + 2, end.y - 2);
     return returnValue;
 }
 
@@ -221,10 +221,10 @@ void MapGenerator::linkRooms(Room startRoom, Room endRoom)
     if (start.x > end.x) {
         std::swap(start, end);
     }
-    for (i = start.x + 1; i <= end.x; i++) {
+    for (i = start.x; i <= end.x; i++) {
         values[i][start.y] = FLOOR;
         values[i][start.y - 1] = FLOOR;
-        values[i][start.y + 1] = FLOOR;
+        values[i][start.y + 1] = FLOOR; 
         (values[i][start.y + 2] == EMPTY) ? (values[i][start.y + 2] = WALL) : 0;
         (values[i][start.y - 2] == EMPTY) ? (values[i][start.y - 2] = WALL) : 0;
     }
@@ -232,8 +232,8 @@ void MapGenerator::linkRooms(Room startRoom, Room endRoom)
     if (start.y > end.y) {
         std::swap(start, end);
     }
-    i--;
-    for (j = start.y; j <= end.y; j++) {
+    i -= 2;
+    for (j = start.y; j <= end.y + 1; j++) {
         values[i][j] = FLOOR;
         values[i + 1][j] = FLOOR;
         values[i - 1][j] = FLOOR;

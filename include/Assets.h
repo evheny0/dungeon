@@ -19,6 +19,11 @@ extern ImageID wallDownID;
 extern ImageID wallSideID;
 extern ImageID doorID;
 
+extern ImageID borderUpID;
+extern ImageID borderDownID;
+extern ImageID borderRightID;
+extern ImageID borderLeftID;
+
 extern FontID o4bID;
 extern FontID digiffitiID;
 extern FontID m12ID;
