@@ -11,7 +11,8 @@ class IState {
   protected:
     StateManager *stateManager;
   public:
-    IState(StateManager *stateManager) { this->stateManager = stateManager; }
+    IState(StateManager *stateManager) { this->stateManager = stateManager; };
+    virtual ~IState() { };
     
     virtual void input(sf::Event &event) = 0;
     virtual void update() = 0;

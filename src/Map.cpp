@@ -21,7 +21,6 @@ void Map::loadImages()
     floor = Game::assetManager->getImage(floorID);
     wall = Game::assetManager->getImage(wallID);
     wallDown = Game::assetManager->getImage(wallDownID);
-    wallSide = Game::assetManager->getImage(wallSideID);
     door = Game::assetManager->getImage(doorID);
 
     border_up = Game::assetManager->getImage(borderUpID);
@@ -50,9 +49,10 @@ void Map::render()
 
                     if (generator[i][j - 1] == WALL) {
                         //background.draw(border_up, i * TILE_SIZE, j * TILE_SIZE);
-
+                        background.draw(wall, i * TILE_SIZE, (j - 2) * TILE_SIZE);
                         // need another tileset for walls
                         // drawing walls
+                        /*
                         switch (getRandomNumber(0, 3)) {
                         case 0:
                             background.draw(wall, i * TILE_SIZE, (j - 1) * TILE_SIZE);
@@ -66,7 +66,7 @@ void Map::render()
                             background.draw(wall, i * TILE_SIZE, (j - 2) * TILE_SIZE);
                             background.draw(wall, i * TILE_SIZE, (j - 3) * TILE_SIZE);
                             break;
-                        }
+                        }*/
                     }
                     if (generator[i - 1][j] == WALL) {
                         background.draw(border_left, i * TILE_SIZE, j * TILE_SIZE);

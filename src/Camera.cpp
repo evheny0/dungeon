@@ -19,7 +19,11 @@ void Camera::setDefault()
 void Camera::reset(int x, int y, int width, int height)
 {
     view.reset(sf::FloatRect(x, y, width, height));
-    //view.zoom(0.5);
+}
+
+void Camera::zoom(float value)
+{
+    view.zoom(value);
 }
 
 void Camera::rotate(int angle)
@@ -27,7 +31,7 @@ void Camera::rotate(int angle)
     view.rotate(angle);
 }
 
-void Camera::setViewport(int x, int y, int width, int height)
+void Camera::setViewport(float x, float y, float width, float height)
 {
     view.setViewport(sf::FloatRect(x, y, width, height));
 }

@@ -31,7 +31,6 @@ class Map {
   private:
     Image *wall;
     Image *wallDown;
-    Image *wallSide;
     Image *floor;
     Image *door;
 

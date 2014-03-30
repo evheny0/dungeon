@@ -8,15 +8,17 @@ extern ImageID charachterID;
 extern ImageID splashID;
 extern ImageID buttonID;
 extern ImageID button_inactiveID;
+
 extern ImageID moveRightID;
 extern ImageID moveLeftID;
 extern ImageID stayRightID;
 extern ImageID stayLeftID;
 
+extern ImageID skeletonID;
+
 extern ImageID floorID;
 extern ImageID wallID;
 extern ImageID wallDownID;
-extern ImageID wallSideID;
 extern ImageID doorID;
 
 extern ImageID borderUpID;

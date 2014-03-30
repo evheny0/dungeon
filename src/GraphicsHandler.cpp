@@ -9,7 +9,6 @@ GraphicsHandler::GraphicsHandler()
     textures[floorID] = newTexture(floorID);
     textures[wallID] = newTexture(wallID);
     textures[wallDownID] = newTexture(wallDownID);
-    textures[wallSideID] = newTexture(wallSideID);
     textures[doorID] = newTexture(doorID);
 
     textures[borderUpID] = newTexture(borderUpID);
@@ -21,6 +20,8 @@ GraphicsHandler::GraphicsHandler()
     textures[moveLeftID] = newTexture(moveLeftID);
     textures[stayRightID] = newTexture(stayRightID);
     textures[stayLeftID] = newTexture(stayLeftID);
+
+    textures[skeletonID] = newTexture(skeletonID);
 }
 
 GraphicsHandler::~GraphicsHandler()

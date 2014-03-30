@@ -12,8 +12,9 @@ class Camera : public Drawable {
 
     void setDefault();
     void reset(int x, int y, int width, int height);
+    void zoom(float value);
     void rotate(int angle);
-    void setViewport(int x, int y, int width, int height);
+    void setViewport(float x, float y, float width, float height);
     void move(int x, int y);
     void setCenter(int x, int y);
 

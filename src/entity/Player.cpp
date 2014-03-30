@@ -1,14 +1,11 @@
 #include "entity/Player.h"
 
-Player::Player()
+Player::Player() : Entity()
 {
     stayRight = Game::assetManager->getImage(stayRightID);
     stayLeft = Game::assetManager->getImage(stayLeftID);
     currentImage = stayRight;
     initAnimation();
-    setVelocity(4);
-    setPosition(0, 0);
-    stop();
 }
 
 Player::~Player()
@@ -26,34 +23,6 @@ void Player::initAnimation()
     }
     moveRightAnimation->play();
     moveLeftAnimation->play();
-}
-
-int Player::getX()
-{
-    return x;
-}
-
-int Player::getY()
-{
-    return y;
-}
-
-void Player::setPosition(int x, int y)
-{
-    this->x = x;
-    this->y = y;
-}
-
-void Player::setVelocity(int vel)
-{
-    velocity = vel;
-}
-
-
-void Player::stop()
-{
-    dx = 0;
-    dy = 0;
 }
 
 void Player::runUp()
@@ -127,23 +96,4 @@ void Player::stopLeft()
     if (dy == 0) {
         currentImage = stayLeft;
     }
-}
-
-void Player::move()
-{
-    y += dy;
-    x += dx;
-}
-
-void Player::rollback()
-{
-    y -= dy;
-    x -= dx;
-}
-
-
-void Player::show()
-{
-    currentImage->setPosition(x - (currentImage->getWidth() / 2), y - currentImage->getHeight());
-    currentImage->show();
 }

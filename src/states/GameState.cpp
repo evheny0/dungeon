@@ -9,7 +9,6 @@ GameState::GameState(StateManager *stateManager) : IState(stateManager),
     levelMap.render();
     player.setPosition(levelMap.startX * TILE_SIZE, levelMap.startY * TILE_SIZE);
     camera.reset(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-    camera.apply();
 }
 
 GameState::~GameState()
