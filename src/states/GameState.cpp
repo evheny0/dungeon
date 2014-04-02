@@ -9,6 +9,8 @@ GameState::GameState(StateManager *stateManager) : IState(stateManager),
     levelMap.render();
     player.setPosition(levelMap.startX * TILE_SIZE, levelMap.startY * TILE_SIZE);
     camera.reset(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+
+    skeleton.setPosition(levelMap.startX * TILE_SIZE, levelMap.startY * TILE_SIZE);
 }
 
 GameState::~GameState()
@@ -37,6 +39,7 @@ void GameState::show()
     camera.apply();
     levelMap.show();
     player.show();
+    skeleton.show();
 }
 
 

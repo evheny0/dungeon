@@ -7,23 +7,10 @@
 
 
 class Player : public Entity {
-    Image *stayRight;
-    Image *stayLeft;
-    Animation *moveRightAnimation;
-    Animation *moveLeftAnimation;
   public:
     Player();
     ~Player();
     void initAnimation();
-
-    void runUp();
-    void runDown();
-    void runRight();
-    void runLeft();
-    void stopUp();
-    void stopDown();
-    void stopRight();
-    void stopLeft();
 };
 
 

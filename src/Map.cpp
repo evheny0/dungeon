@@ -126,5 +126,6 @@ bool Map::isIntersects(int x, int y)
 {
     if (generator[x][y] == WALL) {  // need to rewrite
         return true;
-    } return false;
+    } 
+    return false;
 }
