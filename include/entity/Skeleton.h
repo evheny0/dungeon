@@ -1,13 +1,17 @@
 #ifndef SKELETON_H
 #define SKELETON_H
 
-#include "entity/Entity.h"
+
+#include "AI/AgressiveAI.h"
 
 
 class Skeleton : public Entity {
+    BasicAI *ai; 
   public:
-    Skeleton();
+    Skeleton(int x, int y);
     ~Skeleton();
+
+    void act(Map *levelMap);
 };
 
 

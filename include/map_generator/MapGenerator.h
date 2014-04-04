@@ -25,6 +25,8 @@ const char DOOR = '+';
 const char START = 'S';
 const char END = 'E';
 
+const char MOB = 'M';
+
 
 int getRandomNumber(int min, int max);
 
@@ -59,6 +61,7 @@ class Room {            // set inheritance from sf::Rect
 class MapGenerator {
     int seed;
     char **values;
+    int mapWorth;
     std::vector<Room> rooms;
     Coord levelStart;
     Coord levelEnd;
@@ -79,6 +82,7 @@ class MapGenerator {
     void fillRoom(Room room);
     void fillFloor(Coord start, Coord end);
     void fillOutline(Coord start, Coord end);
+    void setMobs(Coord start, Coord end);
     void generate();
 };
 

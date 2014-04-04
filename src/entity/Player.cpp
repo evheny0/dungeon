@@ -6,6 +6,7 @@ Player::Player() : Entity()
     stayLeft = Game::assetManager->getImage(stayLeftID);
     currentImage = stayRight;
     initAnimation();
+    setVelocity(4);
 }
 
 Player::~Player()

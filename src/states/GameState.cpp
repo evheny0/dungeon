@@ -4,13 +4,10 @@ GameState::GameState(StateManager *stateManager) : IState(stateManager),
                                                    levelMap(MAP_SIZE_X, MAP_SIZE_Y)
 {
     floor = Game::assetManager->getImage(floorID);
-    entityMap[10] = new Entity; 
     levelMap.generate();
     levelMap.render();
     player.setPosition(levelMap.startX * TILE_SIZE, levelMap.startY * TILE_SIZE);
     camera.reset(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-
-    skeleton.setPosition(levelMap.startX * TILE_SIZE, levelMap.startY * TILE_SIZE);
 }
 
 GameState::~GameState()
@@ -31,6 +28,7 @@ void GameState::update()
     if (levelMap.isIntersects(player.getX() / TILE_SIZE, player.getY() / TILE_SIZE)) {
         player.rollback();
     }
+    levelMap.update();
     updateCamera();
 }
 
@@ -39,7 +37,6 @@ void GameState::show()
     camera.apply();
     levelMap.show();
     player.show();
-    skeleton.show();
 }
 
 

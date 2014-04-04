@@ -27,13 +27,29 @@ void Map::loadImages()
     border_down = Game::assetManager->getImage(borderDownID);
     border_right = Game::assetManager->getImage(borderRightID);
     border_left = Game::assetManager->getImage(borderLeftID);
-
 }
 
 void Map::generate(int seed)
 {
     generator.generate();
     generator.show();
+    generateMobs();
+    generator.show();
+}
+
+void Map::generateMobs()
+{
+    int i, j, x, y;
+    for (i = 0; i < sizeY; i++) {
+        for (j = 0; j < sizeX; j++) {
+            if (generator[i][j] == MOB) {
+                x = getRandomNumber(i * TILE_SIZE, (i + 1) * TILE_SIZE - 1);
+                y = getRandomNumber(j * TILE_SIZE, (j + 1) * TILE_SIZE - 1);
+                mobs.push_back(new Skeleton(x, y));
+                generator[i][j] = FLOOR;
+            }
+        }
+    }
 }
 
 void Map::render()
@@ -50,23 +66,6 @@ void Map::render()
                     if (generator[i][j - 1] == WALL) {
                         //background.draw(border_up, i * TILE_SIZE, j * TILE_SIZE);
                         background.draw(wall, i * TILE_SIZE, (j - 2) * TILE_SIZE);
-                        // need another tileset for walls
-                        // drawing walls
-                        /*
-                        switch (getRandomNumber(0, 3)) {
-                        case 0:
-                            background.draw(wall, i * TILE_SIZE, (j - 1) * TILE_SIZE);
-                            break;
-                        case 1:
-                            background.draw(wall, i * TILE_SIZE, (j - 1) * TILE_SIZE);
-                            background.draw(wall, i * TILE_SIZE, (j - 2) * TILE_SIZE);
-                            break;
-                        case 2:
-                            background.draw(wall, i * TILE_SIZE, (j - 1) * TILE_SIZE);
-                            background.draw(wall, i * TILE_SIZE, (j - 2) * TILE_SIZE);
-                            background.draw(wall, i * TILE_SIZE, (j - 3) * TILE_SIZE);
-                            break;
-                        }*/
                     }
                     if (generator[i - 1][j] == WALL) {
                         background.draw(border_left, i * TILE_SIZE, j * TILE_SIZE);
@@ -84,6 +83,9 @@ void Map::render()
                 case START:
                     startX = i;
                     startY = j;
+                    background.draw(floor, i * TILE_SIZE, j * TILE_SIZE);
+                    background.draw(door, i * TILE_SIZE, (j - 2) * TILE_SIZE);
+                    break;
                 case END:
                     background.draw(floor, i * TILE_SIZE, j * TILE_SIZE);
                     background.draw(door, i * TILE_SIZE, (j - 2) * TILE_SIZE);
@@ -117,14 +119,31 @@ void Map::reallocValues()
     }
 }
 
+void Map::update()
+{
+    std::list<Entity *>::iterator it;
+    for (it = mobs.begin(); it != mobs.end(); it++) {
+        (*it)->act(this);
+    }
+}
+
 void Map::show()
 {
     background.show();
+    showMobs();
+}
+
+void Map::showMobs()
+{
+    std::list<Entity *>::iterator it;
+    for (it = mobs.begin(); it != mobs.end(); it++) {
+        (*it)->show();
+    }
 }
 
 bool Map::isIntersects(int x, int y)
 {
-    if (generator[x][y] == WALL) {  // need to rewrite
+    if (generator[x][y] == WALL) {  // need to rewrite. Calling isPassable() method implementation
         return true;
     } 
     return false;

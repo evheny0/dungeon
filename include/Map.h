@@ -2,10 +2,12 @@
 #define MAP_H
 
 #include <iostream>
+#include <list>
 #include "graphic/Image.h"
 #include "graphic/Tileset.h"
 #include "CoreTypes.h"
 #include "map_generator/MapGenerator.h"
+#include "entity/Entity.h"
 
 
 class MapCell {
@@ -39,15 +41,21 @@ class Map {
     Image *border_right;
     Image *border_left;
     Tileset background;
+
+    //std::map<int, Entity *> entityMap;
+    std::list<Entity *> mobs;
   public:
     Map(int x, int y);
     ~Map();
     void loadImages();
     void generate(int seed = 0);
+    void generateMobs();
     void render();
     MapCell *operator[](int x);
     void clear();
+    void update();
     void show();
+    void showMobs();
     bool isIntersects(int x, int y);
   private:
     void reallocValues();
@@ -55,5 +63,6 @@ class Map {
 
 
 #include "Game.h"
+#include "entity/Skeleton.h"
 
 #endif // MAP_H

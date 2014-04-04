@@ -5,6 +5,7 @@
 #include "graphic/Animation.h"
 #include "Assets.h"
 
+class Map;
 
 class Entity {
   protected:
@@ -20,6 +21,7 @@ class Entity {
   public:
     Entity();
     virtual ~Entity();
+    virtual void act(Map *levelMap) { };
 
     int getX();
     int getY();
@@ -41,6 +43,5 @@ class Entity {
 
     bool isEnemy(Entity *opponent);
 };
-
 
 #endif // ENTITY_H

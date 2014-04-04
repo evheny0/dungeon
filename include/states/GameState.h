@@ -13,8 +13,6 @@
 #include "Map.h"
 #include "Camera.h"
 
-#include "entity/Skeleton.h"
-
 const int MAP_SIZE_X = 70;
 const int MAP_SIZE_Y = 70;
 
@@ -22,8 +20,6 @@ const int MAP_SIZE_Y = 70;
 class GameState : public IState, public EventHandler {
     Image *floor;
     Player player;
-    Skeleton skeleton;
-    std::map<int, Entity *> entityMap;  // need to move it to Map
     Map levelMap;
     Camera camera;
   public:

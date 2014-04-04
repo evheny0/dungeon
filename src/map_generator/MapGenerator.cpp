@@ -122,6 +122,7 @@ MapGenerator::MapGenerator()
             values[i][j] = EMPTY;
         }
     }
+    mapWorth = 0;
     seed = time(NULL);
     srand(seed);
 }
@@ -227,6 +228,7 @@ void MapGenerator::fillRoom(Room room)
 {
     fillFloor(room.getStart(), room.getEnd());
     fillOutline(room.getStart(), room.getEnd());
+    setMobs(room.getStart(), room.getEnd());
 }
 
 void MapGenerator::fillFloor(Coord start, Coord end)
@@ -249,6 +251,16 @@ void MapGenerator::fillOutline(Coord start, Coord end)
     for (i = start.y; i <= end.y; i++) {
         values[start.x][i] = WALL;
         values[end.x][i] = WALL;
+    }
+}
+
+void MapGenerator::setMobs(Coord start, Coord end)
+{
+    int x, y;
+    if (!getRandomNumber(0, 3)) {
+        x = getRandomNumber(start.x, end.x);
+        y = getRandomNumber(start.y, end.y);
+        values[x][y] = MOB;
     }
 }
 

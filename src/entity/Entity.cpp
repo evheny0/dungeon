@@ -2,7 +2,6 @@
 
 Entity::Entity()
 {
-    setVelocity(4);
     setPosition(0, 0);
     stop();
     currentImage = 0;
