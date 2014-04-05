@@ -1,27 +1,38 @@
 #include "Map.h"
 
 
-MapCell::MapCell(bool _isPassable)
+MapCell::MapCell(bool _isPassable, int _x, int _y)
 {
     image = NULL;
     isPassable = _isPassable;
+    x = _x;
+    y = _y;
 }
-
+/*
 MapCell::MapCell(const MapCell &copy)
 {
     isPassable = copy.isPassable;
     entities = copy.entities;
-}
+}*/
 
 MapCell::~MapCell() 
 {
 
 }
-
+/*
 void MapCell::operator=(MapCell copy)
 {
     isPassable = copy.isPassable;
-    //entities = copy.entities;
+    if (x == -1) {
+        x = copy.x;
+        y = copy.y;
+        entities = copy.entities;
+    }
+}
+*/
+void MapCell::update(MapCell templateCell)
+{
+    isPassable = templateCell.isPassable;
 }
     
 bool MapCell::isFree()
@@ -38,6 +49,22 @@ bool MapCell::hasEntities()
         return false;
     }
     return true;
+}
+
+void MapCell::setCoord(int _x, int _y)
+{
+    x = _x;
+    y = _y;
+}
+
+int MapCell::getX()
+{
+    return x;
+}
+
+int MapCell::getY()
+{
+    return y;
 }
 
 Image *MapCell::getImage()   // no need
@@ -63,6 +90,25 @@ Entity *MapCell::removeEntity(Entity *entity)
 std::list<Entity *> MapCell::getEntities()
 {
     return entities;
+}
+
+Entity *MapCell::getEnemy(Entity *enemy)
+{
+    std::list<Entity *>::iterator it;
+    for (it = entities.begin(); it != entities.end(); it++) {
+        if (enemy->isEnemy(*it)) {
+            return *it;
+        }
+    }
+    return NULL;
+}
+
+float MapCell::getDistance(MapCell destination)
+{
+    int dx = abs(x - destination.x);
+    int dy = abs(y - destination.y);
+    float returnValue = sqrt((float) pow(dx, 2) + (float) pow(dy, 2));
+    return returnValue;
 }
 
 
@@ -135,7 +181,7 @@ void Map::render()
                 case FLOOR:
                 case CORRIDOR:
                     background.draw(floor, i * TILE_SIZE, j * TILE_SIZE);
-                    cells[i][j] = floorCell;
+                    cells[i][j].update(floorCell);
 
                     if (generator[i][j - 1] == WALL) {
                         //background.draw(border_up, i * TILE_SIZE, j * TILE_SIZE);
@@ -146,7 +192,7 @@ void Map::render()
                     }
                     break;
                 case WALL:
-                    cells[i][j] = wallCell;
+                    cells[i][j].update(wallCell);
                     if (generator[i][j - 1] == FLOOR) {
                         background.draw(wallDown, i * TILE_SIZE, j * TILE_SIZE);
                         //background.draw(border_down, i * TILE_SIZE, (j - 1) * TILE_SIZE);
@@ -156,14 +202,14 @@ void Map::render()
                     }
                     break;
                 case START:
-                    cells[i][j] = startCell;
+                    cells[i][j].update(startCell);
                     startX = i;
                     startY = j;
                     background.draw(floor, i * TILE_SIZE, j * TILE_SIZE);
                     background.draw(door, i * TILE_SIZE, (j - 2) * TILE_SIZE);
                     break;
                 case END:
-                    cells[i][j] = endCell;
+                    cells[i][j].update(endCell);
                     background.draw(floor, i * TILE_SIZE, j * TILE_SIZE);
                     background.draw(door, i * TILE_SIZE, (j - 2) * TILE_SIZE);
                     break;
@@ -184,6 +230,7 @@ void Map::clear()
     for (i = 0; i < sizeX; i++) {
         for (j = 0; j < sizeY; j++) {
             cells[i][j] = emptyCell;
+            cells[i][j].setCoord(i, j);
         }
     }
 }

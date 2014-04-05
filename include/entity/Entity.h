@@ -1,6 +1,7 @@
 #ifndef ENTITY_H
 #define ENTITY_H
 
+#include <cmath>
 #include "graphic/Image.h"
 #include "graphic/Animation.h"
 #include "Assets.h"
@@ -12,6 +13,7 @@ class Entity {
     int velocity;
     int x, y;     // coords
     int dx, dy;   // offset for move
+    int destX, destY;
     Image *currentImage;
 
     Image *stayRight;
@@ -25,6 +27,8 @@ class Entity {
 
     int getX();
     int getY();
+    void setDx(int _dx);
+    void setDy(int _dy);
     void setPosition(int x, int y);
     void setVelocity(int vel);
     void stop();
@@ -42,6 +46,9 @@ class Entity {
     void stopLeft();
 
     bool isEnemy(Entity *opponent);
+    void setDestination(int _x, int _y);
+  private:
+    void calculateVector();
 };
 
 #include "Map.h"

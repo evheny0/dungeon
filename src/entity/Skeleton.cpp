@@ -8,7 +8,7 @@ Skeleton::Skeleton(int _x, int _y) : Entity()
     stayLeft = currentImage;
 
     ai = new AgressiveAI(this);
-    setVelocity(1);
+    setVelocity(2);
 
     setPosition(_x, _y);
 

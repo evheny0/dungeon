@@ -6,6 +6,8 @@
 #include "AI/BasicAI.h"
 #include "entity/Entity.h"
 
+const int RANGE = 200;
+
 
 class AgressiveAI : public BasicAI {
     Entity *entity;
@@ -14,6 +16,7 @@ class AgressiveAI : public BasicAI {
     ~AgressiveAI();
 
     void updateState(Map *levelMap);  
+    Entity *findEnemy(Map *levelMap);
 };
 
 #include "Map.h"

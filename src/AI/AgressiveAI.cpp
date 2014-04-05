@@ -9,40 +9,51 @@ AgressiveAI::~AgressiveAI()
 {
     
 }
-
+#include <iostream>
 void AgressiveAI::updateState(Map *levelMap)
 {
-    /*
-    do {
-        entity->stop();
-        switch (rand() % 4) {
-        case 0:
-            entity->runUp();
-            break;
-        case 1:
-            entity->runDown();
-            break;
-        case 2:
-            entity->runLeft();
-            break;
-        case 3:
-            entity->runRight();
-            break;
-        }
-        entity->move();
-        if (levelMap->isIntersects(entity->getX() / TILE_SIZE, entity->getY() / TILE_SIZE)) {
-            entity->rollback();
-            continue;
-        }
-    } while (false);*/
-    int x = entity->getX() / TILE_SIZE, y = entity->getY() / TILE_SIZE;
     entity->stop();
-    (*levelMap)[x][y].removeEntity(entity);
-    if (!(*levelMap)[x][y].getEntities().empty()) {
-        if ((*levelMap)[x][y].getEntities().front()->isEnemy(entity)) {
-            entity->runDown();
+    (*levelMap)[entity->getX() / TILE_SIZE][entity->getY() / TILE_SIZE].removeEntity(entity);
+    Entity *enemy = findEnemy(levelMap);
+    if (enemy) {
+        entity->setDestination(enemy->getX(), enemy->getY());
+    }
+
+    entity->move();
+    (*levelMap)[entity->getX() / TILE_SIZE][entity->getY() / TILE_SIZE].addEntity(entity);
+}
+
+// FBS
+Entity *AgressiveAI::findEnemy(Map *levelMap)
+{
+    int x = entity->getX() / TILE_SIZE, y = entity->getY() / TILE_SIZE, i, j;
+    std::list<MapCell> cells;
+    std::map<MapCell *, bool> visited;
+    MapCell current, start = (*levelMap)[x][y];
+    Entity *returnValue;
+    cells.push_back(start);
+    visited[&start] = true;
+
+    while(!cells.empty()) {
+        current = cells.back();
+        cells.pop_back();
+
+        returnValue = current.getEnemy(entity);
+        if (returnValue) {
+            return returnValue;
+        }
+
+        for (i = current.getX() - 1; i < current.getX() + 2; i++) {
+            for (j = current.getY() - 1; j < current.getY() + 2; j++) {
+                if ((*levelMap)[i][j].isFree() && 
+                                !visited[&(*levelMap)[i][j]] &&
+                                ((*levelMap)[i][j].getDistance(start) * TILE_SIZE) <= RANGE) {
+                    cells.push_back((*levelMap)[i][j]);
+                    visited[&(*levelMap)[i][j]] = true;
+
+                }
+            }
         }
     }
-    entity->move();
-    (*levelMap)[x][y].addEntity(entity);
+    return NULL;
 }

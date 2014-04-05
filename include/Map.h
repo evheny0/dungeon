@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <list>
+#include <cmath>
 #include "graphic/Image.h"
 #include "graphic/Tileset.h"
 #include "CoreTypes.h"
@@ -15,18 +16,25 @@ class MapCell {
     std::list<Entity *> entities;
     bool isPassable;
     Image *image;
+    int x, y;
   public:
-    MapCell(bool _isPassable = false);
-    MapCell(const MapCell &copy);
+    MapCell(bool _isPassable = false, int x = -1, int y = -1);
+    //MapCell(const MapCell &copy);
     ~MapCell();
-    void operator=(MapCell copy);
+    //void operator=(MapCell copy);
+    void update(MapCell templateCell);
     bool isFree();
     bool hasEntities();
     Image *getImage();
+    void setCoord(int _x, int _y);
+    int getX();
+    int getY();
     void setImage(Image *_image);
     void addEntity(Entity *entity);
     Entity *removeEntity(Entity *entity);
     std::list<Entity *> getEntities();
+    Entity *getEnemy(Entity *enemy);
+    float getDistance(MapCell destination);
 };
 
 
