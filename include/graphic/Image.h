@@ -4,23 +4,24 @@
 #include <string>
 #include <SFML/Graphics.hpp>
 #include "graphic/Drawable.h"
+#include "Assets.h"
 
 
 class Image : public Drawable {
     std::string path;
-    sf::Texture texture;
+    sf::Texture *texture;
   protected:
     sf::Sprite sprite;
   public:
-    Image(std::string path);
     Image(sf::Texture &texture);
     Image(const Image &copy);
+    Image(ImageID imageID);
     ~Image();
     sf::Sprite &getSfmlSprite();
+    sf::Rect<int> getTextureRect();
     void setPosition(int x, int y);
     void move(int x, int y);
     void show();
-    sf::Rect<int> getTextureRect();
 
     virtual int getWidth();
     virtual int getHeight();

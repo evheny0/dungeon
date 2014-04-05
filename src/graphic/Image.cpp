@@ -1,21 +1,15 @@
 #include "graphic/Image.h"
 
-Image::Image(std::string path)
-{
-    texture.loadFromFile(path);
-    sprite.setTexture(texture, true);
-}
-
-Image::Image(sf::Texture &texture)
-{
-    this->texture = texture;
-    sprite.setTexture(texture);
-}
-
 Image::Image(const Image &copy)
 {
     this->texture = copy.texture;
     this->sprite = copy.sprite;
+}
+
+Image::Image(ImageID imageID)
+{
+    texture = assetManager->getSfmlTexture(imageID);
+    sprite.setTexture(*texture);
 }
 
 Image::~Image()

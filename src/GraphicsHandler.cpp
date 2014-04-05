@@ -31,16 +31,15 @@ GraphicsHandler::~GraphicsHandler()
         delete it->second;
     }
 }
-
-Image *GraphicsHandler::getImage(ImageID &image)
+#include <iostream>
+sf::Texture *GraphicsHandler::getSfmlTexture(ImageID imageID)
 {
-    sf::Texture *currentTexture = textures[image];
-    if (!currentTexture) {
-        throw "Image not found";
+    sf::Texture *returnTexture = textures[imageID];
+    if (!returnTexture) {
+        throw "Texture not found";
     }
-    return new Image(*currentTexture);
+    return returnTexture;
 }
-
 
 
 sf::Texture *GraphicsHandler::newTexture(ImageID path)

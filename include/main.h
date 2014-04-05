@@ -6,6 +6,6 @@
 #include "Game.h"
 
 sf::RenderWindow* Drawable::window;
-AssetManager* Game::assetManager;
+AssetManager *Drawable::assetManager;
 
 #endif

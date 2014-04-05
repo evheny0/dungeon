@@ -3,8 +3,6 @@
 
 #include "GraphicsHandler.h"
 #include "FontHandler.h"
-#include "graphic/Image.h"
-#include "graphic/Text.h"
 
 
 class AssetManager {
@@ -13,8 +11,9 @@ class AssetManager {
   public:
     AssetManager();
     ~AssetManager();
-    Image *getImage(ImageID &image);
-    Text *getText(FontID &font);
+    sf::Texture *getSfmlTexture(ImageID imageID);
+    sf::Font *getSfmlFont(FontID fontID);
 };
+
 
 #endif

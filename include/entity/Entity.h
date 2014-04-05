@@ -44,4 +44,6 @@ class Entity {
     bool isEnemy(Entity *opponent);
 };
 
+#include "Map.h"
+
 #endif // ENTITY_H

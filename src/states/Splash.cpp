@@ -2,12 +2,11 @@
 
 Splash::Splash(StateManager *stateManager) : IState(stateManager)
 {
-    splash = Game::assetManager->getImage(splashID);
+    splash = new Image(splashID);
 }
-#include <iostream>
+
 Splash::~Splash()
 {
-    std::cout << "Splash destr\n";
     delete splash;
 }
 

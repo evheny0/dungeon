@@ -11,8 +11,7 @@ class Animation : public Image {
     std::vector<sf::IntRect> frames;
     std::vector<sf::IntRect>::iterator currentFrame;
   public:
-    Animation(sf::Texture &texture);
-    Animation(Image &image);
+    Animation(ImageID imageID);
     ~Animation();
     void addFrame(int x, int y, int width, int height);
     void play();

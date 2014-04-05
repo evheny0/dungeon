@@ -4,7 +4,6 @@
 #include <map>
 #include <SFML/Graphics.hpp>
 #include "Assets.h"
-#include "graphic/Text.h"
 
 
 class FontHandler {
@@ -12,7 +11,9 @@ class FontHandler {
   public:
     FontHandler();
     ~FontHandler();
-    Text *getText(FontID &font);
+    sf::Font *getSfmlFont(FontID fontID);
+
+  private:
     sf::Font *newFont(FontID &path);
 };
 

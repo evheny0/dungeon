@@ -15,13 +15,14 @@ FontHandler::~FontHandler()
     }
 }
 
-Text *FontHandler::getText(FontID &font)
+sf::Font *FontHandler::getSfmlFont(FontID fontID)
 {
-    sf::Font *currentFont = fonts[font];
-    if (!currentFont) {
+    sf::Font *returnFont = fonts[fontID];
+    if (!returnFont) {
         throw "Font not found";
     }
-    return new Text(currentFont);
+    return returnFont;
+
 }
 
 sf::Font *FontHandler::newFont(FontID &path)

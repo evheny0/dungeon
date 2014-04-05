@@ -11,9 +11,8 @@ class Player : public Entity {
     Player();
     ~Player();
     void initAnimation();
+    void act(Map *levelMap);
 };
 
-
-#include "Game.h"
 
 #endif // PLAYER_H

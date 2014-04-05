@@ -1,11 +1,6 @@
 #include "graphic/Animation.h"
 
-Animation::Animation(sf::Texture &texture) : Image(texture)
-{
-
-}
-
-Animation::Animation(Image &image) : Image(image)
+Animation::Animation(ImageID imageID) : Image(imageID)
 {
 
 }

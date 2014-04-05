@@ -2,10 +2,9 @@
 #define GRAPHICS_HANDLER_H
 
 #include <map>
+#include <SFML/Graphics.hpp>
 #include "Assets.h"
 #include "BasicHandler.h"
-#include "graphic/Image.h"
-#include "graphic/Drawable.h"
 
 
 class GraphicsHandler : public BasicHandler {
@@ -14,7 +13,7 @@ class GraphicsHandler : public BasicHandler {
   public:
     GraphicsHandler();
     ~GraphicsHandler();
-    Image *getImage(ImageID &image);
+    sf::Texture *getSfmlTexture(ImageID imageID);
 
   private:
     sf::Texture *newTexture(ImageID path);

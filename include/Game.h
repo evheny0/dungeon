@@ -4,18 +4,13 @@
 #include "AssetManager.h"
 #include "ConfigManager.h"
 #include "StateManager.h"
-#include "graphic/Image.h"
 #include "CoreTypes.h"
-
-class StateManager;
+#include "graphic/Drawable.h"
 
 
 class Game {
     sf::RenderWindow window;
-  public:
-    static AssetManager *assetManager;
-
-  private:
+    AssetManager *assetManager;
     ConfigManager *configManager;
     StateManager *stateManager;
 

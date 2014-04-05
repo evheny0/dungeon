@@ -4,8 +4,8 @@ Settings::Settings(StateManager *stateManager) : IState(stateManager)
 {
     std::string str = "BACK";
     backButton = new Button(new Functor<Settings>(this, &Settings::onBackButton));
-    backButton->setImages(Game::assetManager->getImage(buttonID), Game::assetManager->getImage(button_inactiveID));
-    backButton->setText(Game::assetManager->getText(digiffitiID));
+    backButton->setImages(new Image(buttonID), new Image(button_inactiveID));
+    backButton->setText(new Text(digiffitiID));
     backButton->setString(str);
     backButton->setPosition(300, 100);
 }

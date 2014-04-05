@@ -1,13 +1,8 @@
 #include "graphic/Text.h"
 
-Text::Text()
+Text::Text(FontID fontID)
 {
-
-}
-
-Text::Text(sf::Font *font)
-{
-    this->font = font;
+    font = assetManager->getSfmlFont(fontID);
     text.setFont(*font);
 }
 

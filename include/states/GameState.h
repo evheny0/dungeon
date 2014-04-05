@@ -18,7 +18,6 @@ const int MAP_SIZE_Y = 70;
 
 
 class GameState : public IState, public EventHandler {
-    Image *floor;
     Player player;
     Map levelMap;
     Camera camera;

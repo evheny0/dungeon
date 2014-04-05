@@ -25,8 +25,8 @@ void MainMenu::initButtons()
 Button *MainMenu::newButton(std::string str, void(MainMenu::*callback)())
 {
     Button *returnButton = new Button(new Functor<MainMenu>(this, callback));
-    returnButton->setImages(Game::assetManager->getImage(buttonID), Game::assetManager->getImage(button_inactiveID));
-    returnButton->setText(Game::assetManager->getText(digiffitiID));
+    returnButton->setImages(new Image(buttonID), new Image(button_inactiveID));
+    returnButton->setText(new Text(digiffitiID));
     returnButton->setString(str);
     return returnButton;
 }

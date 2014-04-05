@@ -4,6 +4,7 @@
 #include <string>
 #include <SFML/Graphics.hpp>
 #include "graphic/Drawable.h"
+#include "Assets.h"
 
 
 class Text : public Drawable {
@@ -11,8 +12,7 @@ class Text : public Drawable {
     sf::Text text;
 
   public:
-    Text();
-    Text(sf::Font *font);
+    Text(FontID fontID);
     ~Text();
     void setString(std::string &str);
     void setPosition(int x, int y);

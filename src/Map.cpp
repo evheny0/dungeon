@@ -18,15 +18,15 @@ Map::~Map()
 
 void Map::loadImages()
 {
-    floor = Game::assetManager->getImage(floorID);
-    wall = Game::assetManager->getImage(wallID);
-    wallDown = Game::assetManager->getImage(wallDownID);
-    door = Game::assetManager->getImage(doorID);
+    floor = new Image(floorID);
+    wall = new Image(wallID);
+    wallDown = new Image(wallDownID);
+    door = new Image(doorID);
 
-    border_up = Game::assetManager->getImage(borderUpID);
-    border_down = Game::assetManager->getImage(borderDownID);
-    border_right = Game::assetManager->getImage(borderRightID);
-    border_left = Game::assetManager->getImage(borderLeftID);
+    border_up = new Image(borderUpID);
+    border_down = new Image(borderDownID);
+    border_right = new Image(borderRightID);
+    border_left = new Image(borderLeftID);
 }
 
 void Map::generate(int seed)
@@ -34,7 +34,6 @@ void Map::generate(int seed)
     generator.generate();
     generator.show();
     generateMobs();
-    generator.show();
 }
 
 void Map::generateMobs()

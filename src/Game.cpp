@@ -10,6 +10,7 @@ void Game::modulesInit()
 {
     configManager = new ConfigManager();
     assetManager = new AssetManager();
+    Drawable::assetManager = assetManager;
     stateManager = new StateManager();
 }
 

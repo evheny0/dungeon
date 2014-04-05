@@ -2,8 +2,8 @@
 
 Player::Player() : Entity()
 {
-    stayRight = Game::assetManager->getImage(stayRightID);
-    stayLeft = Game::assetManager->getImage(stayLeftID);
+    stayRight = new Image(stayRightID);
+    stayLeft = new Image(stayLeftID);
     currentImage = stayRight;
     initAnimation();
     setVelocity(4);
@@ -16,8 +16,8 @@ Player::~Player()
 
 void Player::initAnimation()
 {
-    moveRightAnimation = new Animation(*(Game::assetManager->getImage(moveRightID)));
-    moveLeftAnimation = new Animation(*(Game::assetManager->getImage(moveLeftID)));
+    moveRightAnimation = new Animation(moveRightID);
+    moveLeftAnimation = new Animation(moveLeftID);
     for (int i = 0; i < 6; i++) {
         moveRightAnimation->addFrame(i * TILE_SIZE, 0, TILE_SIZE, TILE_SIZE * 2);
         moveLeftAnimation->addFrame(i * TILE_SIZE, 0, TILE_SIZE, TILE_SIZE * 2);
@@ -26,3 +26,10 @@ void Player::initAnimation()
     moveLeftAnimation->play();
 }
 
+void Player::act(Map *levelMap)
+{
+    move();
+    if (levelMap->isIntersects(x / TILE_SIZE, y / TILE_SIZE)) {
+        rollback();
+    }
+}

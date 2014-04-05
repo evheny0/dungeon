@@ -257,9 +257,10 @@ void MapGenerator::fillOutline(Coord start, Coord end)
 void MapGenerator::setMobs(Coord start, Coord end)
 {
     int x, y;
-    if (!getRandomNumber(0, 3)) {
+    if (!getRandomNumber(0, 2)) {
         x = getRandomNumber(start.x, end.x);
         y = getRandomNumber(start.y, end.y);
+        mapWorth -= 5; // worth of mob
         values[x][y] = MOB;
     }
 }

@@ -10,12 +10,12 @@ AssetManager::~AssetManager()
     
 }
 
-Image *AssetManager::getImage(ImageID &image)
+sf::Texture *AssetManager::getSfmlTexture(ImageID imageID)
 {
-    return graphics.getImage(image);
+    return graphics.getSfmlTexture(imageID);
 }
 
-Text *AssetManager::getText(FontID &font)
+sf::Font *AssetManager::getSfmlFont(FontID fontID)
 {
-    return fonts.getText(font);
+    return fonts.getSfmlFont(fontID);
 }

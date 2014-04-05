@@ -3,7 +3,6 @@
 GameState::GameState(StateManager *stateManager) : IState(stateManager),
                                                    levelMap(MAP_SIZE_X, MAP_SIZE_Y)
 {
-    floor = Game::assetManager->getImage(floorID);
     levelMap.generate();
     levelMap.render();
     player.setPosition(levelMap.startX * TILE_SIZE, levelMap.startY * TILE_SIZE);
@@ -24,10 +23,7 @@ void GameState::input(sf::Event &event)
 
 void GameState::update()
 {
-    player.move();
-    if (levelMap.isIntersects(player.getX() / TILE_SIZE, player.getY() / TILE_SIZE)) {
-        player.rollback();
-    }
+    player.act(&levelMap);
     levelMap.update();
     updateCamera();
 }
@@ -82,8 +78,6 @@ void GameState::eventKeyReleased(sf::Event::KeyEvent &key)
     }
 
 }
-
-
 
 void GameState::updateCamera()
 {

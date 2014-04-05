@@ -3,6 +3,7 @@
 
 
 #include "AI/AgressiveAI.h"
+#include "Entity.h"
 
 
 class Skeleton : public Entity {
@@ -14,7 +15,5 @@ class Skeleton : public Entity {
     void act(Map *levelMap);
 };
 
-
-#include "Game.h"
 
 #endif // SKELETON_H

@@ -7,8 +7,8 @@
 #include "graphic/Tileset.h"
 #include "CoreTypes.h"
 #include "map_generator/MapGenerator.h"
-#include "entity/Entity.h"
 
+class Entity;
 
 class MapCell {
   public:
@@ -62,7 +62,6 @@ class Map {
 };
 
 
-#include "Game.h"
 #include "entity/Skeleton.h"
 
 #endif // MAP_H
