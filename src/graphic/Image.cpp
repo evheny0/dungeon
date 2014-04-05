@@ -1,5 +1,11 @@
 #include "graphic/Image.h"
 
+Image::Image()
+{
+    texture = new sf::Texture;
+    sprite.setTexture(*texture);
+}
+
 Image::Image(const Image &copy)
 {
     this->texture = copy.texture;

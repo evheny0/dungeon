@@ -13,6 +13,7 @@ class Image : public Drawable {
   protected:
     sf::Sprite sprite;
   public:
+    Image();
     Image(sf::Texture &texture);
     Image(const Image &copy);
     Image(ImageID imageID);

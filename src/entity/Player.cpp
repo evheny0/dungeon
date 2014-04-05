@@ -26,8 +26,10 @@ void Player::initAnimation()
 
 void Player::act(Map *levelMap)
 {
+    (*levelMap)[x / TILE_SIZE][y / TILE_SIZE].removeEntity(this);
     move();
     if (levelMap->isIntersects(x / TILE_SIZE, y / TILE_SIZE)) {
         rollback();
     }
+    (*levelMap)[x / TILE_SIZE][y / TILE_SIZE].addEntity(this);
 }

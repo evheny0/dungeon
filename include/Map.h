@@ -10,19 +10,35 @@
 
 class Entity;
 
+
 class MapCell {
+    std::list<Entity *> entities;
+    bool isPassable;
+    Image *image;
   public:
-    MapCell() {};
-    ~MapCell() {};
-    
+    MapCell(bool _isPassable = false);
+    MapCell(const MapCell &copy);
+    ~MapCell();
+    void operator=(MapCell copy);
+    bool isFree();
+    bool hasEntities();
+    Image *getImage();
+    void setImage(Image *_image);
+    void addEntity(Entity *entity);
+    Entity *removeEntity(Entity *entity);
+    std::list<Entity *> getEntities();
 };
+
 
 class Map {
     MapGenerator generator;
-    MapCell **values;
+    MapCell **cells;
     MapCell emptyCell;
     MapCell wallCell;
     MapCell floorCell;
+    MapCell startCell;
+    MapCell endCell;
+    std::list<Entity *> mobs;
     int sizeX;
     int sizeY;
 
@@ -41,9 +57,6 @@ class Map {
     Image *border_right;
     Image *border_left;
     Tileset background;
-
-    //std::map<int, Entity *> entityMap;
-    std::list<Entity *> mobs;
   public:
     Map(int x, int y);
     ~Map();

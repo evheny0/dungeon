@@ -39,6 +39,7 @@ void Entity::stop()
 {
     dx = 0;
     dy = 0;
+    currentImage = stayRight;
 }
 
 void Entity::move()
@@ -60,7 +61,7 @@ void Entity::show()
 }
 
 
-bool isEnemy(Entity *opponent)
+bool Entity::isEnemy(Entity *opponent)
 {
     return true;
 }

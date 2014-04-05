@@ -1,9 +1,9 @@
 #ifndef AGRESSIVE_AI_H
 #define AGRESSIVE_AI_H
 
-
-#include "AI/BasicAI.h"
+#include <list>
 #include <cstdlib>
+#include "AI/BasicAI.h"
 #include "entity/Entity.h"
 
 
