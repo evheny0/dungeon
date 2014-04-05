@@ -15,10 +15,8 @@ Skeleton::Skeleton(int _x, int _y) : Entity()
 
     moveRightAnimation = new Animation(moveRightID);
     moveLeftAnimation = new Animation(moveLeftID);
-    for (int i = 0; i < 6; i++) {
-        moveRightAnimation->addFrame(i * TILE_SIZE, 0, TILE_SIZE, TILE_SIZE * 2);
-        moveLeftAnimation->addFrame(i * TILE_SIZE, 0, TILE_SIZE, TILE_SIZE * 2);
-    }
+    moveRightAnimation->split(TILE_SIZE);
+    moveLeftAnimation->split(TILE_SIZE);
     moveRightAnimation->play();
     moveLeftAnimation->play();
 }

@@ -3,9 +3,9 @@
 
 #include <string>
 
-typedef char* StateID;
-typedef char* ImageID;
-typedef char* FontID;
+typedef const char* StateID;
+typedef const char* ImageID;
+typedef const char* FontID;
 
 const int SCREEN_WIDTH = 960;
 const int SCREEN_HEIGHT = 540;

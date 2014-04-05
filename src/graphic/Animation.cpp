@@ -11,6 +11,14 @@ Animation::~Animation()
 }
 
 
+
+void Animation::split(int frameWidth)
+{
+    for (int i = 0; i < sprite.getTextureRect().width / frameWidth; i++) {
+        addFrame(i * frameWidth, 0, frameWidth, sprite.getTextureRect().height);
+    }
+}
+
 void Animation::addFrame(int x, int y, int width, int height)
 {
     frames.push_back(sf::IntRect(x, y, width, height));

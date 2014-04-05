@@ -14,6 +14,7 @@ class Animation : public Image {
     Animation(ImageID imageID);
     ~Animation();
     void addFrame(int x, int y, int width, int height);
+    void split(int frameWidth);
     void play();
     void updateFrame();
     int getWidth();
