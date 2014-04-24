@@ -9,6 +9,8 @@ Skeleton::Skeleton(int _x, int _y) : Entity()
 
     ai = new AgressiveAI(this);
     setVelocity(2);
+    maxHealth = 10;
+    heal();
 
     setPosition(_x, _y);
 

@@ -14,6 +14,8 @@ class Entity {
     int x, y;     // coords
     int dx, dy;   // offset for move
     int destX, destY;
+    int health;
+    int maxHealth;
     Image *currentImage;
 
     Image *stayRight;
@@ -34,6 +36,8 @@ class Entity {
     void stop();
     void move();
     void rollback();
+    void heal(int value = 0);
+    void hurt(int value);
     void show();
 
     void runUp();

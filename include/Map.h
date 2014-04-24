@@ -65,7 +65,10 @@ class Map {
     Image *border_right;
     Image *border_left;
     Tileset background;
+
+    Image *no_image;
   public:
+
     Map(int x, int y);
     ~Map();
     void loadImages();

@@ -7,6 +7,8 @@ Player::Player() : Entity()
     currentImage = stayRight;
     initAnimation();
     setVelocity(4);
+    maxHealth = 10;
+    heal();
 }
 
 Player::~Player()
@@ -22,6 +24,52 @@ void Player::initAnimation()
     moveLeftAnimation->split(TILE_SIZE);
     moveRightAnimation->play();
     moveLeftAnimation->play();
+}
+
+void Player::input(sf::Event &event)
+{
+    inputEvent(event);
+}
+
+void Player::eventKeyPressed(sf::Event::KeyEvent &key)
+{
+    switch (key.code) {
+    case sf::Keyboard::W:
+        runUp();
+        break;
+    case sf::Keyboard::A:
+        runLeft();
+        break;
+    case sf::Keyboard::S:
+        runDown();
+        break;
+    case sf::Keyboard::D:
+        runRight();
+        break;
+    }
+}
+
+void Player::eventKeyReleased(sf::Event::KeyEvent &key)
+{
+    switch (key.code) {
+    case sf::Keyboard::W:
+        stopUp();
+        break;
+    case sf::Keyboard::A:
+        stopLeft();
+        break;
+    case sf::Keyboard::S:
+        stopDown();
+        break;
+    case sf::Keyboard::D:
+        stopRight();
+        break;
+    }
+}
+
+void Player::eventLeftMouseButtonPressed(sf::Event::MouseButtonEvent &mouseButton)
+{
+
 }
 
 void Player::act(Map *levelMap)

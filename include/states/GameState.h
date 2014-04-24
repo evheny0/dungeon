@@ -30,8 +30,8 @@ class GameState : public IState, public EventHandler {
     void show();
   private:
     void eventClosed();
-    void eventKeyPressed(sf::Event::KeyEvent &key);
-    void eventKeyReleased(sf::Event::KeyEvent &key);
+    //void eventKeyPressed(sf::Event::KeyEvent &key);
+    //void eventKeyReleased(sf::Event::KeyEvent &key);
 
     void updateCamera();
 };

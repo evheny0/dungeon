@@ -17,19 +17,19 @@ BUILD_COLOR := \033[0;34m
 MESSAGE_COLOR := \033[1;33m
 
 $(TARGET): $(OBJECTS)
-	@echo "$(MESSAGE_COLOR) Linking... $(RESET_COLOR)"
-	@echo "$(BUILD_COLOR) $(CC) $^ -o $(TARGET) $(LIB) $(RESET_COLOR)"; $(CC) $^ -o $(TARGET) $(LIB)
+	@echo -e  "$(MESSAGE_COLOR) Linking... $(RESET_COLOR)"
+	@echo -e "$(BUILD_COLOR) $(CC) $^ -o $(TARGET) $(LIB) $(RESET_COLOR)"; $(CC) $^ -o $(TARGET) $(LIB)
 
 $(BUILDDIR)/%.o: $(SRCDIR)/%.$(SRCEXT)
 	@mkdir -p $(BUILDDIR)
 	@for folder in $(SUBFOLDERS) ; do \
 		mkdir -p $(BUILDDIR)/$$folder ; \
 	done
-	@echo "$(BUILD_COLOR) $(CC) $(CFLAGS) $(INC) -c -o $@ $< $(RESET_COLOR)"; $(CC) $(CFLAGS) $(INC) -c -o $@ $<
+	@echo -e "$(BUILD_COLOR) $(CC) $(CFLAGS) $(INC) -c -o $@ $< $(RESET_COLOR)"; $(CC) $(CFLAGS) $(INC) -c -o $@ $<
 
 clean:
-	@echo "$(MESSAGE_COLOR) Cleaning... $(RESET_COLOR)"; 
-	@echo " $(RM) -r $(BUILDDIR) $(TARGET)"; $(RM) -r $(BUILDDIR) $(TARGET)
+	@echo -e "$(MESSAGE_COLOR) Cleaning... $(RESET_COLOR)"; 
+	@echo -e " $(RM) -r $(BUILDDIR) $(TARGET)"; $(RM) -r $(BUILDDIR) $(TARGET)
 
 rebuild: clean $(TARGET)
 

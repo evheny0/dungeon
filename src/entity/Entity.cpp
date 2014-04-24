@@ -5,6 +5,7 @@ Entity::Entity()
     setPosition(0, 0);
     stop();
     currentImage = 0;
+    health = 0;
 }
 
 Entity::~Entity()
@@ -64,7 +65,25 @@ void Entity::rollback()
     x -= dx;
 }
 
-void Entity::show()
+void Entity::heal(int value)
+{
+    if (value == 0 || (value + health) > maxHealth) {
+        health = maxHealth;
+    } else {
+        health += value;
+    }
+}
+
+void Entity::hurt(int value)
+{
+    if ((health - value) < 0) {
+        health = 0;
+    } else {
+        health -= value;
+    }
+}
+
+void Entity::show() 
 {
     currentImage->setPosition(x - (currentImage->getWidth() / 2), y - currentImage->getHeight());
     currentImage->show();

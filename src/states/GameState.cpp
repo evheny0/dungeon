@@ -19,6 +19,7 @@ GameState::~GameState()
 void GameState::input(sf::Event &event)
 {
     inputEvent(event);
+    player.input(event);
 }
 
 void GameState::update()
@@ -40,43 +41,6 @@ void GameState::show()
 void GameState::eventClosed()
 {
     stateManager->resetState();
-}
-
-void GameState::eventKeyPressed(sf::Event::KeyEvent &key)
-{
-    switch (key.code) {
-    case sf::Keyboard::W:
-        player.runUp();
-        break;
-    case sf::Keyboard::A:
-        player.runLeft();
-        break;
-    case sf::Keyboard::S:
-        player.runDown();
-        break;
-    case sf::Keyboard::D:
-        player.runRight();
-        break;
-    }
-}
-
-void GameState::eventKeyReleased(sf::Event::KeyEvent &key)
-{
-    switch (key.code) {
-    case sf::Keyboard::W:
-        player.stopUp();
-        break;
-    case sf::Keyboard::A:
-        player.stopLeft();
-        break;
-    case sf::Keyboard::S:
-        player.stopDown();
-        break;
-    case sf::Keyboard::D:
-        player.stopRight();
-        break;
-    }
-
 }
 
 void GameState::updateCamera()
